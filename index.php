@@ -46,13 +46,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['email'], $_POST['senh
                 // Redirecionamento com base no tipo
                 switch ($usuario_db['usu_tipo_usuario']) {
                     case 0: // Resenhista
-                        header("Location: resenhistas/resenhistas.php");
+                        header("Location: liv e res/index.php");
                         break;
                     case 1: // Livraria
-                        header("Location: livrarias/livrarias.php");
+                        header("Location: liv e res/index.php");
                         break;
                     case 2: // Administrador
-                        header("Location: home.php");
+                        header("Location: administrador/home.php");
                         break;
                     default:
                         echo "Tipo de usuário inválido.";
