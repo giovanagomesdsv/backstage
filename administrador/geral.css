@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Flex:opsz,wght@8..144,100..1000&family=Roboto:ital,wght@0,100..900;1,100..900&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap'); 
+
+* {
+ margin: 0;
+ padding: 0;
+ font-family: 'Roboto', sans-serif;
+ box-sizing: border-box;
+ text-decoration: none;
+ list-style-type: none;
+ transition: .2s;
+ color: var(--text);
+ scroll-behavior: smooth;
+}
+
+:root {
+    --bg: #DEDEDE;
+    --text: #ffffff;
+    --principal: #406E96;
+    --secundaria: #2A4A64;
+    --terciaria: #1F3A50;
+}
+
+
+::-webkit-scrollbar {
+    height: 0;
+    width: 0.5rem;
+}
+
+::-webkit-scrollbar-track{
+    background: var(--terciaria);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--text);
+    border-radius: .5rem;
+}
+body {
+    background-color: var(--bg);
+}
+
+/* header bc administrador*/
+header {
+    display: flex;
+    align-items: center;
+    height: 1.5rem;
+    background-color: var(--terciaria);
+    padding-left: 20rem;
+}
+.sidebar {
+    height: 100vh;
+    width: 5rem;
+    background: var(--secundaria);
+    top: 0;
+    position: fixed;
+    z-index: 1000;
+}
+.nome {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+} 
+.menu{
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+} 
+.menu:hover{
+    border: 1px solid;
+    border-radius: 30%;
+} 
+.logo_name {
+    width: 100%;
+    display: none;
+    text-align: center;
+    justify-content: center;
+    margin-top: 1rem;
+}
+.sidebar ul{
+    height: 100%;
+    font-size: 1rem;
+    margin-top: 2rem;
+    padding-left: 2rem;
+}
+
+
+.sidebar ul li {
+    margin-top: 1.3rem;
+    width: 100%;
+}
+.sidebar ul li a .link_name{
+    margin-left: 1.4rem;
+    display: none;
+}
+.sidebar ul li:hover {
+    border-bottom: 1px solid;
+}
+.sidebar ul .fix {
+    background: var(--principal);
+    padding: .5rem;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-bottom: 1px solid;
+}
+
+
+
+.sidebar.abrir {
+    width: 15rem;
+}
+
+.sidebar.abrir .logo_name{
+    display: flex;
+}
+.sidebar.abrir .link_name{
+    display: block;
+}
+.sidebar.abrir .sair{
+    border: 1px solid;
+    width: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.5rem;
+    border-radius: 50%;
+    margin: 40% 0 0 50%;
+    transition: .2s;
+}
+.sidebar.abrir .sair:hover{
+    background-color: #406E96;
+}
+
+.sidebar.abrir ul li {
+    margin-top: 1rem;
+}
+
+/*corpo*/
+main {
+    height: 100vh;
+    width: 80%;
+    border: 1px solid red;
+    margin: 0 10%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+}
+
+.botao{
+    background-color:#2A4A64;
+    color:#f5f5f5;
+    width: 10rem;
+    height: 2rem;
+}

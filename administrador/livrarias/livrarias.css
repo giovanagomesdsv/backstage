@@ -1,0 +1,28 @@
+:root {
+    --bg: #DEDEDE;
+    --text: #f5f5f5;
+    --principal: #406E96;
+    --secundaria: #2A4A64;
+    --terciaria: #1F3A50;
+}
+
+/*CSS DA SEARCH-BAR*/
+
+.search-input {
+    width: 300px; /* Largura padrão */
+    padding: 10px; /* Adiciona um pouco de espaço interno */
+    font-size: 16px; /* Aumenta o tamanho da fonte */
+    border: 1px solid #ccc; /* Adiciona uma borda */
+    border-radius: 4px; /* Arredonda os cantos */
+    color:black;
+}
+
+.search-form {
+    display: flex; /* Alinha o input e o botão na mesma linha */
+}
+
+.search-form button {
+    border-radius: 5px;
+    background-color: var(--bg);
+    padding: 10px; /* Adiciona um pouco de espaço interno ao botão */
+}
