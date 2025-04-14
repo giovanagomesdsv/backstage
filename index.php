@@ -79,7 +79,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['email'], $_POST['senh
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="administrador/login.css">
     <title>Administrador BC - Login</title>
 </head>
 
@@ -107,8 +107,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['email'], $_POST['senh
         <div class="toggle-container">
             <div class="toggle">
                 <div class="toggle-panel toggle-right">
-                    <h1>Olá, você está acessando o site Administrador do BIBLIÓFILOS Community!</h1>
-                    <p>É necessário que um administrador já cadastrado realize o cadastro de um novo colaborador.</p>
+                    <h1>Olá, você está acessando BACKSTAGE Community!</h1>
+                    <p>É necessário o administrador realize o cadastro de um novo colaborador. Para mais informações, entrar em contato</p>
                 </div>
             </div>
         </div>

@@ -6,5 +6,5 @@ if(!isset($_SESSION)) {
 // deixa de existir
 session_destroy();
 
-header ("Location: index.php");
+header ("Location: ../index.php");
 ?>

@@ -13,7 +13,6 @@ body {
     justify-content: center;
     flex-direction: column;
     height: 100vh;
-    color: #fff;
 }
 
 .container {
@@ -21,9 +20,9 @@ body {
     box-shadow: -5px 5px 15px #2A4A64;
     position: relative;
     overflow: hidden;
-    width: 768px;
+    width: 950px;
     max-width: 100%;
-    min-height: 400px;
+    min-height: 500px;
     
 }
 
@@ -39,17 +38,15 @@ body {
 }
 
 .container a {
-    color: #333;
     font-size: 13px;
     text-decoration: none;
     margin: 15px 0 10px ;
 }
 
 .container .btn {
-    color: #fff;
     font-size: 12px;
     padding: 15px 40px;
-    border: 1px solid #fff;
+    border: 1px solid #000000;
     border-radius: 12px;
     letter-spacing: .5px;
     text-transform: uppercase;
@@ -113,7 +110,6 @@ body {
 
 
 .container form {
-    background: #333;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -123,15 +119,12 @@ body {
 }
 
 .container input {
-    background: #333;
-    border: none;
-    border-bottom: 1px solid #fff;
+    border-bottom: 1px solid #000000;
     margin: 8px 0;
     padding: 10px 15px;
     font-size: 13px;
     border-radius: 8px;
     width: 100%;
-    outline: none;
 }
 
 .form-container {
