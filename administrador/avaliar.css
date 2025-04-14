@@ -6,34 +6,37 @@
     --terciaria: #1F3A50;
 }
 
-body{
-    background-color:#DEDEDE;
-        height: 100vh;
-        width: 80%;
-        border: 1px solid red;
-        margin: 0 10%;
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        position: absolute;
-    }
-.avaliaresenha{
-    font-size:3rem;
+body {
+    background-color: #DEDEDE;
+    height: 100vh;
+    width: 80%;
+    border: 1px solid red;
+    margin: 0 10%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
 }
-    p{
-        margin-top: 2rem;
-        font-size: 2rem;
-        text-decoration: underline ;
-       line-height: 10rem;
-    }
-    .imgtitulo{
-        border: 1px solid red;
-        display: flex;
-       width: 80%;
-        justify-content: space-between;
-      
-    }
-.cardazul{
+
+.avaliaresenha {
+    font-size: 3rem;
+}
+
+p {
+    margin-top: 2rem;
+    font-size: 2rem;
+    line-height: 10rem;
+}
+
+.imgtitulo {
+    border: 1px solid red;
+    display: flex;
+    width: 80%;
+    justify-content: space-between;
+
+}
+
+.cardazul {
     background-color: #406E96;
     border: 1px solid red;
     color: #f5f5f5;
@@ -44,41 +47,53 @@ body{
     align-items: center;
     text-align: left;
 }
-.cardbranco1{
-    background-color:#DEDEDE;
+
+.cardbranco1 {
+    background-color: #DEDEDE;
     width: 80%;
-    margin-top:1rem ;
-    color:black;
+    margin-top: 1rem;
+    color: black;
 }
 
-.cardbranco2{
-    background-color:#DEDEDE;
+.cardbranco2 {
+    background-color: #DEDEDE;
     width: 90%;
-    margin-top:1rem ;
-    color:black;
+    margin-top: 1rem;
+    color: black;
 }
 
 .cardforms {
-    width: 100%; /* Ajusta a largura do formulário */
-    max-width: 400px; /* Define uma largura máxima */
-    margin: 0 auto; /* Centraliza o formulário */
-    display:flex;
+    width: 100%;
+    /* Ajusta a largura do formulário */
+    max-width: 400px;
+    /* Define uma largura máxima */
+    margin: 0 auto;
+    /* Centraliza o formulário */
+    display: flex;
 }
 
 .cardforms select {
-    width: 100%; /* Faz o select ocupar toda a largura do formulário */
-    padding: 2rem; /* Adiciona um pouco de espaço interno */
-    font-size: 2rem; /* Aumenta o tamanho da fonte */
-    margin-bottom: 1rem; 
-    color: black;/* Adiciona espaço abaixo do select */
+    width: 100%;
+    /* Faz o select ocupar toda a largura do formulário */
+    padding: 2rem;
+    /* Adiciona um pouco de espaço interno */
+    font-size: 2rem;
+    /* Aumenta o tamanho da fonte */
+    margin-bottom: 1rem;
+    color: black;
+    /* Adiciona espaço abaixo do select */
 }
 
 .cardforms input[type='submit'] {
-    width: 100%; /* Faz o botão ocupar toda a largura do formulário */
-    padding: 2rem; /* Adiciona um pouco de espaço interno */
-    font-size:2rem; /* Aumenta o tamanho da fonte */
-    color: black; /* Cor do texto do botão */
-    margin-bottom: 1rem; 
-    cursor: pointer; /* Muda o cursor para indicar que é clicável */
+    width: 100%;
+    /* Faz o botão ocupar toda a largura do formulário */
+    padding: 2rem;
+    /* Adiciona um pouco de espaço interno */
+    font-size: 2rem;
+    /* Aumenta o tamanho da fonte */
+    color: black;
+    /* Cor do texto do botão */
+    margin-bottom: 1rem;
+    cursor: pointer;
+    /* Muda o cursor para indicar que é clicável */
 }
-

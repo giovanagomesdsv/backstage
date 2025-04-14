@@ -15,7 +15,6 @@ include "conexao-banco/conexao.php";
 <head>
 <meta charset='UTF-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-<link rel='stylesheet' href='avaliar.css'>
    
 <title>Avaliar resenha</title>
 </head>
@@ -25,14 +24,18 @@ include "conexao-banco/conexao.php";
  
  
   <div class='cardazul'>
-    <div class='imgtitulo'>
-      <p>{$row['livro_foto']}</p>
-    <div class='cardbranco1'>
-      <p>{$row['livro_sinopse']}</p>
-    </div>
-      <p>{$row['resenha_titulo']}</p>
+      <div class='imgtitulo'>
+        <img src='imagens/livros/{$row['livro_foto']}' alt=''>
+      </div>
+
+     <div class='cardbranco1'>
+        <p>{$row['livro_sinopse']}</p>
+     </div>
+
+     <p>{$row['resenha_titulo']}</p>
   
   </div>
+  
       <p>RESENHA</p>
   <div class='cardbranco2'>
       <p>{$row['resenha_texto']}</p>
@@ -62,5 +65,4 @@ include "conexao-banco/conexao.php";
 ?>
 
 </body>
-
 </html>

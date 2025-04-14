@@ -99,7 +99,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['email'], $_POST['senh
                         <option value="1">Livraria</option>
                 </select>
 
-                <a href="" style="color: #fff">Esqueci a senha</a>
+                <a href="esquecisenha.php" style="color: #000">Esqueci a senha</a>
                 <button class="btn">Entrar</button>
             </form>
         </div>
