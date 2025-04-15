@@ -110,6 +110,7 @@ body {
 
 
 .container form {
+    background-color: #042036;
     display: flex;
     align-items: center;
     justify-content: center;

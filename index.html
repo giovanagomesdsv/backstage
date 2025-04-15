@@ -1,22 +1,4 @@
 <?php
-/*
-        if ($result->num_rows === 1) {
-            $usuario_db = $result->fetch_assoc();
-
-            if (password_verify($senha, $usuario_db['usu_senha'])) {
-                $_SESSION['id'] = $usuario_db['usu_id'];
-                $_SESSION['nome'] = $usuario_db['usu_nome'];
-
-                header("Location: home.php");
-                exit();
-            } else {
-                echo "Falha ao logar! Senha incorreta.";
-            }
-        } else {
-            echo "Falha ao logar! E-mail incorreto.";
-        }
-*/
-
 session_start();
 include "administrador/conexao-banco/conexao.php";
 
@@ -38,20 +20,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['email'], $_POST['senh
         if ($result->num_rows === 1) {
             $usuario_db = $result->fetch_assoc();
 
-            if ($senha === $usuario_db['usu_senha']) { // ou use password_verify()
+            if ($senha === $usuario_db['usu_senha']) {
                 $_SESSION['id'] = $usuario_db['usu_id'];
                 $_SESSION['nome'] = $usuario_db['usu_nome'];
                 $_SESSION['tipo'] = $usuario_db['usu_tipo_usuario'];
 
-                // Redirecionamento com base no tipo
                 switch ($usuario_db['usu_tipo_usuario']) {
-                    case 0: // Resenhista
+                    case 0:
+                    case 1:
                         header("Location: liv e res/index.php");
                         break;
-                    case 1: // Livraria
-                        header("Location: liv e res/index.php");
-                        break;
-                    case 2: // Administrador
+                    case 2:
                         header("Location: administrador/home.php");
                         break;
                     default:
@@ -69,44 +48,50 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['email'], $_POST['senh
         $stmt->close();
     }
 }
-
-
 ?>
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <link rel="stylesheet" href="administrador/login.css">
     <title>Administrador BC - Login</title>
 </head>
-
 <body>
     <div class="container" id="container">
 
-        <div class="form-container sign-in">
-            <form action="" method="POST" name="form1">
-                <h1>Entrar</h1>
-                <input type="text" name="email" placeholder="E-mail" required>
-                <input type="password" name="senha" placeholder="Senha" required>
-
-                <select name="tipo_usuario" required>
+        <!-- Escolha de tipo de usuário -->
+        <div class="form-container select-type">
+            <form id="tipoForm">
+                <h1>Escolha o tipo de usuário</h1>
+                <select name="tipo_usuario" id="tipo_usuario" required>
                     <option value="">Selecione o tipo de usuário</option>
                     <option value="2">Administrador</option>
                     <option value="0">Resenhista</option>
                     <option value="1">Livraria</option>
                 </select>
+                <button type="button" id="proximoBtn" class="btn">Próximo</button>
+            </form>
+        </div>
+
+        <!-- Formulário de login (inicialmente escondido) -->
+        <div class="form-container sign-in" id="loginContainer" style="display: none;">
+            <form action="" method="POST" name="form1">
+                <h1>Entrar</h1>
+                <input type="hidden" name="tipo_usuario" id="tipoSelecionado">
+                <input type="text" name="email" placeholder="E-mail" required>
+                <input type="password" name="senha" placeholder="Senha" required>
 
                 <a href="esquecisenha.php" style="color: #000">Esqueci a senha</a>
                 <button class="btn">Entrar</button>
 
-                <!-- Link para cadastro da livraria (aparece apenas se tipo_usuario for "1") -->
+                <!-- Links dinâmicos -->
                 <a id="cadastro-link" href="cadastro-livraria.php" style="display: none; color: #000; margin-top: 10px;">Criar conta como livraria</a>
+                <a id="resenhista-link" href="#" target="_blank" style="display: none; color: #000; margin-top: 10px;">Quero me tornar um resenhista</a>
             </form>
         </div>
 
+        <!-- Painel fixo -->
         <div class="toggle-container">
             <div class="toggle">
                 <div class="toggle-panel toggle-right">
@@ -117,19 +102,43 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['email'], $_POST['senh
         </div>
     </div>
 
-    <!-- Script para mostrar link de cadastro apenas para tipo "Livraria" -->
+    <!-- Script -->
     <script>
-        const tipoUsuarioSelect = document.querySelector('select[name="tipo_usuario"]');
+        const proximoBtn = document.getElementById('proximoBtn');
+        const tipoSelect = document.getElementById('tipo_usuario');
+        const loginContainer = document.getElementById('loginContainer');
+        const tipoSelecionado = document.getElementById('tipoSelecionado');
         const cadastroLink = document.getElementById('cadastro-link');
+        const resenhistaLink = document.getElementById('resenhista-link');
 
-        tipoUsuarioSelect.addEventListener('change', function () {
-            if (this.value === "1") { // Livraria
+        proximoBtn.addEventListener('click', function () {
+            const tipo = tipoSelect.value;
+            if (!tipo) {
+                alert("Por favor, selecione o tipo de usuário.");
+                return;
+            }
+
+            tipoSelecionado.value = tipo;
+            loginContainer.style.display = 'block';
+
+            // Mostra link conforme tipo selecionado
+            if (tipo === "1") { // Livraria
                 cadastroLink.style.display = 'inline-block';
+                resenhistaLink.style.display = 'none';
+            } else if (tipo === "0") { // Resenhista
+                cadastroLink.style.display = 'none';
+                resenhistaLink.style.display = 'inline-block';
+
+                const mensagem = encodeURIComponent("Olá, gostaria de me tornar um resenhista na plataforma BACKSTAGE Community.");
+                resenhistaLink.href = `https://wa.me/5591999999999?text=${mensagem}`; // Troque pelo número real
             } else {
                 cadastroLink.style.display = 'none';
+                resenhistaLink.style.display = 'none';
             }
+
+            // Esconde o seletor inicial
+            document.querySelector('.select-type').style.display = 'none';
         });
     </script>
 </body>
-
 </html>
