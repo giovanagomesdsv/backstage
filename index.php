@@ -93,14 +93,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['email'], $_POST['senh
                 <input type="password" name="senha" placeholder="Senha" required>
 
                 <select name="tipo_usuario" required>
-                        <option value="">Selecione o tipo de usuário</option>
-                        <option value="2">Administrador</option>
-                        <option value="0">Resenhista</option>
-                        <option value="1">Livraria</option>
+                    <option value="">Selecione o tipo de usuário</option>
+                    <option value="2">Administrador</option>
+                    <option value="0">Resenhista</option>
+                    <option value="1">Livraria</option>
                 </select>
 
                 <a href="esquecisenha.php" style="color: #000">Esqueci a senha</a>
                 <button class="btn">Entrar</button>
+
+                <!-- Link para cadastro da livraria (aparece apenas se tipo_usuario for "1") -->
+                <a id="cadastro-link" href="cadastro-livraria.php" style="display: none; color: #000; margin-top: 10px;">Criar conta como livraria</a>
             </form>
         </div>
 
@@ -108,13 +111,25 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['email'], $_POST['senh
             <div class="toggle">
                 <div class="toggle-panel toggle-right">
                     <h1>Olá, você está acessando BACKSTAGE Community!</h1>
-                    <p>É necessário o administrador realize o cadastro de um novo colaborador. Para mais informações, entrar em contato</p>
+                    <p>É necessário que o administrador realize o cadastro de um novo colaborador. Para mais informações, entre em contato.</p>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- Script para mostrar link de cadastro apenas para tipo "Livraria" -->
+    <script>
+        const tipoUsuarioSelect = document.querySelector('select[name="tipo_usuario"]');
+        const cadastroLink = document.getElementById('cadastro-link');
 
+        tipoUsuarioSelect.addEventListener('change', function () {
+            if (this.value === "1") { // Livraria
+                cadastroLink.style.display = 'inline-block';
+            } else {
+                cadastroLink.style.display = 'none';
+            }
+        });
+    </script>
 </body>
 
 </html>
