@@ -68,11 +68,6 @@ include "../protecao.php";
         </ul>
     </nav>-->
 
-<!--CADASTRAR LIVRARIA-->
-    <div>
-        <a href="cadastrarlivraria.php">Cadastrar livraria</a>
-    </div>
-
 <!--EXIBE OS CARDS DAS LIVRARIAS-->
 <div class="busca">
             <form action="" method="GET">

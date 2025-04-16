@@ -86,7 +86,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['email'], $_POST['senh
                 <button class="btn">Entrar</button>
 
                 <!-- Links dinâmicos -->
-                <a id="cadastro-link" href="cadastro-livraria.php" style="display: none; color: #000; margin-top: 10px;">Criar conta como livraria</a>
+                <a id="cadastro-link" href="cadastrarusu-livraria.php" style="display: none; color: #000; margin-top: 10px;">Criar conta como livraria</a>
                 <a id="resenhista-link" href="#" target="_blank" style="display: none; color: #000; margin-top: 10px;">Quero me tornar um resenhista</a>
             </form>
         </div>
@@ -96,7 +96,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['email'], $_POST['senh
             <div class="toggle">
                 <div class="toggle-panel toggle-right">
                     <h1>Olá, você está acessando BACKSTAGE Community!</h1>
-                    <p>É necessário que o administrador realize o cadastro de um novo colaborador. Para mais informações, entre em contato.</p>
+                    <p></p>
                 </div>
             </div>
         </div>
@@ -130,7 +130,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['email'], $_POST['senh
                 resenhistaLink.style.display = 'inline-block';
 
                 const mensagem = encodeURIComponent("Olá, gostaria de me tornar um resenhista na plataforma BACKSTAGE Community.");
-                resenhistaLink.href = `https://wa.me/5591999999999?text=${mensagem}`; // Troque pelo número real
+                resenhistaLink.href = `https://wa.me/5514997460253?text=${mensagem}`; 
             } else {
                 cadastroLink.style.display = 'none';
                 resenhistaLink.style.display = 'none';

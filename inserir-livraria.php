@@ -2,7 +2,7 @@
 include "../conexao-banco/conexao.php";
 
 
-$usuario = $_POST['usuario'];                                                 
+$usuario = 1;                                                
 $nome = $_POST['nome'];                     
 $cidade = $_POST['cidade'];
 $estado = $_POST['estado'];   
