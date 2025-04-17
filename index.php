@@ -2,6 +2,9 @@
 session_start();
 include "administrador/conexao-banco/conexao.php";
 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['email'], $_POST['senha'], $_POST['tipo_usuario'])) {
 
     $email = trim($_POST['email']);
@@ -56,6 +59,45 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['email'], $_POST['senh
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="administrador/login.css">
     <title>Administrador BC - Login</title>
+      <!-- Script -->
+      <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const proximoBtn = document.getElementById('proximoBtn');
+        const tipoSelect = document.getElementById('tipo_usuario');
+        const loginContainer = document.getElementById('loginContainer');
+        const tipoSelecionado = document.getElementById('tipoSelecionado');
+        const cadastroLink = document.getElementById('cadastro-link');
+        const resenhistaLink = document.getElementById('resenhista-link');
+
+        proximoBtn.addEventListener('click', function () {
+            const tipo = tipoSelect.value;
+            if (!tipo) {
+                alert("Por favor, selecione o tipo de usuário.");
+                return;
+            }
+
+            tipoSelecionado.value = tipo;
+            loginContainer.style.display = 'block';
+
+            if (tipo === "1") {
+                cadastroLink.style.display = 'inline-block';
+                resenhistaLink.style.display = 'none';
+            } else if (tipo === "0") {
+                cadastroLink.style.display = 'none';
+                resenhistaLink.style.display = 'inline-block';
+
+                const mensagem = encodeURIComponent("Olá, gostaria de me tornar um resenhista na plataforma BACKSTAGE Community.");
+                resenhistaLink.href = `https://wa.me/5514997460253?text=${mensagem}`; 
+            } else {
+                cadastroLink.style.display = 'none';
+                resenhistaLink.style.display = 'none';
+            }
+
+            document.querySelector('.select-type').style.display = 'none';
+        });
+    });
+</script>
+
 </head>
 <body>
     <div class="container" id="container">
@@ -102,43 +144,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['email'], $_POST['senh
         </div>
     </div>
 
-    <!-- Script -->
-    <script>
-        const proximoBtn = document.getElementById('proximoBtn');
-        const tipoSelect = document.getElementById('tipo_usuario');
-        const loginContainer = document.getElementById('loginContainer');
-        const tipoSelecionado = document.getElementById('tipoSelecionado');
-        const cadastroLink = document.getElementById('cadastro-link');
-        const resenhistaLink = document.getElementById('resenhista-link');
-
-        proximoBtn.addEventListener('click', function () {
-            const tipo = tipoSelect.value;
-            if (!tipo) {
-                alert("Por favor, selecione o tipo de usuário.");
-                return;
-            }
-
-            tipoSelecionado.value = tipo;
-            loginContainer.style.display = 'block';
-
-            // Mostra link conforme tipo selecionado
-            if (tipo === "1") { // Livraria
-                cadastroLink.style.display = 'inline-block';
-                resenhistaLink.style.display = 'none';
-            } else if (tipo === "0") { // Resenhista
-                cadastroLink.style.display = 'none';
-                resenhistaLink.style.display = 'inline-block';
-
-                const mensagem = encodeURIComponent("Olá, gostaria de me tornar um resenhista na plataforma BACKSTAGE Community.");
-                resenhistaLink.href = `https://wa.me/5514997460253?text=${mensagem}`; 
-            } else {
-                cadastroLink.style.display = 'none';
-                resenhistaLink.style.display = 'none';
-            }
-
-            // Esconde o seletor inicial
-            document.querySelector('.select-type').style.display = 'none';
-        });
-    </script>
+  
 </body>
 </html>
