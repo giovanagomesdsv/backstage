@@ -61,25 +61,25 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['email'], $_POST['senh
     <title>Administrador BC - Login</title>
 </head>
 <body>
-    <div class="container" id="container">
-        <div class="form-container select-type">
-            <form id="tipoForm">
-                <h1>Escolha o tipo de usuário</h1>
-                <select name="tipo_usuario" id="tipo_usuario" required>
-                    <option value="">Selecione o tipo de usuário</option>
-                    <option value="2">Administrador</option>
-                    <option value="0">Resenhista</option>
-                    <option value="1">Livraria</option>
-                </select>
-                <button type="button" id="proximoBtn" class="btn">Próximo</button>
-            </form>
+    <div class="container">
+        <!-- Seleção de tipo -->
+        <div class="form-container select-type" id="selectType">
+            <h1>Escolha o tipo de usuário</h1>
+            <select id="tipo_usuario" required>
+                <option value="">Selecione o tipo de usuário</option>
+                <option value="2">Administrador</option>
+                <option value="0">Resenhista</option>
+                <option value="1">Livraria</option>
+            </select>
+            <button type="button" id="proximoBtn" class="btn">Próximo</button>
         </div>
 
+        <!-- Login -->
         <div class="form-container sign-in" id="loginContainer" style="display: none;">
-            <form action="" method="POST" name="form1">
+            <form action="" method="POST">
                 <h1>Entrar</h1>
                 <input type="hidden" name="tipo_usuario" id="tipoSelecionado">
-                <input type="text" name="email" placeholder="E-mail" required>
+                <input type="email" name="email" placeholder="E-mail" required>
                 <input type="password" name="senha" placeholder="Senha" required>
                 <a href="esquecisenha.php" style="color: #000">Esqueci a senha</a>
                 <button class="btn">Entrar</button>
@@ -88,44 +88,38 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['email'], $_POST['senh
                 <a id="resenhista-link" href="#" target="_blank" style="display: none; color: #000; margin-top: 10px;">Quero me tornar um resenhista</a>
             </form>
         </div>
-
-        <div class="toggle-container">
-            <div class="toggle">
-                <div class="toggle-panel toggle-right">
-        </div>
-        </div>
     </div>
 
     <script>
         const proximoBtn = document.getElementById('proximoBtn');
-        const tipoSelect = document.getElementById('tipo_usuario');
+        const tipoUsuario = document.getElementById('tipo_usuario');
         const loginContainer = document.getElementById('loginContainer');
         const tipoSelecionado = document.getElementById('tipoSelecionado');
         const cadastroLink = document.getElementById('cadastro-link');
         const resenhistaLink = document.getElementById('resenhista-link');
-        const selectTypeContainer = document.querySelector('.select-type');
+        const selectTypeDiv = document.getElementById('selectType');
 
-        proximoBtn.addEventListener('click', function () {
-            const tipo = tipoSelect.value;
+        proximoBtn.addEventListener('click', () => {
+            const tipo = tipoUsuario.value;
             if (!tipo) {
                 alert("Por favor, selecione o tipo de usuário.");
                 return;
             }
 
             tipoSelecionado.value = tipo;
-            selectTypeContainer.style.display = 'none';
             loginContainer.style.display = 'block';
+            selectTypeDiv.style.display = 'none';
 
-            // Mostra/esconde links conforme tipo selecionado
-            if (tipo === "1") { // Livraria
+            // Mostrar links dinâmicos
+            if (tipo === "1") {
                 cadastroLink.style.display = 'inline-block';
                 resenhistaLink.style.display = 'none';
-            } else if (tipo === "0") { // Resenhista
+            } else if (tipo === "0") {
                 cadastroLink.style.display = 'none';
                 resenhistaLink.style.display = 'inline-block';
                 const mensagem = encodeURIComponent("Olá, gostaria de me tornar um resenhista na plataforma BACKSTAGE Community.");
-                resenhistaLink.href = `https://wa.me/5591997460253?text=${mensagem}`; // Troque pelo número real
-            } else { // Administrador
+                resenhistaLink.href = `https://wa.me/5591999999999?text=${mensagem}`;
+            } else {
                 cadastroLink.style.display = 'none';
                 resenhistaLink.style.display = 'none';
             }
