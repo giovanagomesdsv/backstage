@@ -57,14 +57,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['email'], $_POST['senh
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="administrador/login.css">
+    <link rel="stylesheet" href="login.css">
     <title>Administrador BC - Login</title>
 </head>
 <body>
     <div class="container">
         <!-- Seleção de tipo -->
+        <h1>Escolha o tipo de usuário</h1>
         <div class="form-container select-type" id="selectType">
-            <h1>Escolha o tipo de usuário</h1>
+          
             <select id="tipo_usuario" required>
                 <option value="">Selecione o tipo de usuário</option>
                 <option value="2">Administrador</option>
