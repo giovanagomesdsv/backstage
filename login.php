@@ -1,3 +1,4 @@
+
 <?php
 session_start();
 include "administrador/conexao-banco/conexao.php";
@@ -52,6 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['email'], $_POST['senh
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -59,45 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['email'], $_POST['senh
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="administrador/login.css">
     <title>Administrador BC - Login</title>
-      <!-- Script -->
-      <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const proximoBtn = document.getElementById('proximoBtn');
-        const tipoSelect = document.getElementById('tipo_usuario');
-        const loginContainer = document.getElementById('loginContainer');
-        const tipoSelecionado = document.getElementById('tipoSelecionado');
-        const cadastroLink = document.getElementById('cadastro-link');
-        const resenhistaLink = document.getElementById('resenhista-link');
-
-        proximoBtn.addEventListener('click', function () {
-            const tipo = tipoSelect.value;
-            if (!tipo) {
-                alert("Por favor, selecione o tipo de usuário.");
-                return;
-            }
-
-            tipoSelecionado.value = tipo;
-            loginContainer.style.display = 'block';
-
-            if (tipo === "1") {
-                cadastroLink.style.display = 'inline-block';
-                resenhistaLink.style.display = 'none';
-            } else if (tipo === "0") {
-                cadastroLink.style.display = 'none';
-                resenhistaLink.style.display = 'inline-block';
-
-                const mensagem = encodeURIComponent("Olá, gostaria de me tornar um resenhista na plataforma BACKSTAGE Community.");
-                resenhistaLink.href = `https://wa.me/5514997460253?text=${mensagem}`; 
-            } else {
-                cadastroLink.style.display = 'none';
-                resenhistaLink.style.display = 'none';
-            }
-
-            document.querySelector('.select-type').style.display = 'none';
-        });
-    });
-</script>
-
+    
 </head>
 <body>
     <div class="container" id="container">
@@ -116,7 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['email'], $_POST['senh
             </form>
         </div>
 
-        <!-- Formulário de login (inicialmente escondido) -->
+
         <div class="form-container sign-in" id="loginContainer" style="display: none;">
             <form action="" method="POST" name="form1">
                 <h1>Entrar</h1>
@@ -147,3 +111,4 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['email'], $_POST['senh
   
 </body>
 </html>
+
