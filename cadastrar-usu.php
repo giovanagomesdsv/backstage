@@ -7,10 +7,11 @@ $nome = $_POST['nome'];
 /* $senha = password_hash($_POST['senha'], PASSWORD_BCRYPT);*/
 $senha = $_POST['senha'];
 $usuario = 1; // tipo de usuário
+$status= 0;
 
 // Inserindo no banco
-$sql_code = "INSERT INTO USUARIOS (usu_nome, usu_email, usu_senha, usu_tipo_usuario) 
-VALUES ('$nome', '$email', '$senha', '$usuario')";
+$sql_code = "INSERT INTO USUARIOS (usu_nome, usu_email, usu_senha, usu_tipo_usuario, usu_status) 
+VALUES ('$nome', '$email', '$senha', '$usuario', $status)";
 
 if (mysqli_query($conn, $sql_code)) {
     // Pegando o ID recém inserido

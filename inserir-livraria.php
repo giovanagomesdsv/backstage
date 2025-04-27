@@ -47,7 +47,7 @@ if (mysqli_query($conn, $sql_code)) {
     echo '
     <script>
          alert("Livraria cadastrada com sucesso!");
-         location.href="index.php";
+         location.href="aviso.php";
     </script>
     ';
 } else {

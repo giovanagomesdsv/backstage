@@ -89,10 +89,33 @@ include "conexao-banco/conexao.php";
                         </div>
                         <div class='info'>
                             <p>{$resposta['resenha_titulo']}</p>
-                            <p>{$resposta['res_nome_fantasia']}</p>
+                            <p>- {$resposta['res_nome_fantasia']}</p>
                         </div>
                         <div class='acao'>
                            <a href='avaliar.php?id={$resposta['resenha_id']}'>
+                              <button class='botao'>Avaliar</button>
+                           </a>
+                        </div>
+                    </div>             
+                    ";
+                }
+            }
+
+            $select = "SELECT usu_id, usu_email, usu_nome, liv_nome,liv_cidade,liv_estado,liv_endereco,liv_telefone,liv_email,liv_foto,liv_perfil,liv_social FROM usuarios INNER JOIN livrarias ON livrarias.liv_id = usuarios.usu_id WHERE usu_tipo_usuario = 1 AND usu_status = 0";
+
+            if ($resultado = mysqli_query($conn, $select)) {
+                while ($res = mysqli_fetch_array($resultado)) {
+                    echo "
+                    <div class='card'>
+                        <div class='imagem'>
+                            <img class='imglivro' src='../administrador/imagens/livrarias/{$res['liv_foto']}' alt=''>
+                        </div>
+                        <div class='info'>
+                            <p>{$res['liv_nome']}</p>
+                            <p>- {$res['usu_nome']}</p>
+                        </div>
+                        <div class='acao'>
+                           <a href='avaliar.php?id={$res['usu_id']}'>
                               <button class='botao'>Avaliar</button>
                            </a>
                         </div>
