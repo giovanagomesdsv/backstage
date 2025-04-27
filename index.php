@@ -82,11 +82,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['email'], $_POST['senh
                 <input type="hidden" name="tipo_usuario" id="tipoSelecionado">
                 <input type="email" name="email" placeholder="E-mail" required>
                 <input type="password" name="senha" placeholder="Senha" required>
-                <a href="esquecisenha.php" style="color: #000">Esqueci a senha</a>
+                <a href="esquecisenha.php" style="color: #fff">Esqueci a senha</a>
                 <button class="btn">Entrar</button>
 
-                <a id="cadastro-link" href="cadastro-livraria.php" style="display: none; color: #000; margin-top: 10px;">Criar conta como livraria</a>
-                <a id="resenhista-link" href="#" target="_blank" style="display: none; color: #000; margin-top: 10px;">Quero me tornar um resenhista</a>
+                <a id="cadastro-link" href="cadastrar-usuario.php" style="display: none; color: #fff; margin-top: 10px;">Criar conta como livraria</a>
+
+                <a id="resenhista-link" href="#" target="_blank" style="display: none; color: #fff; margin-top: 10px;">Quero me tornar um resenhista</a>
             </form>
         </div>
     </div>
@@ -119,7 +120,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['email'], $_POST['senh
                 cadastroLink.style.display = 'none';
                 resenhistaLink.style.display = 'inline-block';
                 const mensagem = encodeURIComponent("Olá, gostaria de me tornar um resenhista na plataforma BACKSTAGE Community.");
-                resenhistaLink.href = `https://wa.me/5591999999999?text=${mensagem}`;
+                resenhistaLink.href = `https://wa.me/5514997460253?text=${mensagem}`;
             } else {
                 cadastroLink.style.display = 'none';
                 resenhistaLink.style.display = 'none';

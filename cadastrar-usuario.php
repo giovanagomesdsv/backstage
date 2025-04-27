@@ -8,12 +8,12 @@
     <link rel="stylesheet" href="administrador/usuarios/cadastrarusuario.css">
 </head>
 <body style="background-color:#DEDEDE">
-    <form action="cadastrar-livraria.php">
+    <form action="cadastrar-usu.php" method="post">
 
-    <label for="email">E-mail:</label>
+    <label for="email">E-mail do administrador:</label>
         <input type="email" name="email" >
 
-        <label for="nome">Nome:</label>
+        <label for="nome">Nome do adminiatrador:</label>
         <input type="text" name="nome">
 
         <label for="senha">Senha:</label>
