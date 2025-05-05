@@ -1,131 +1,54 @@
 <?php
-session_start();
-include "administrador/conexao-banco/conexao.php";
+include("conexao-banco/conexao.php");
 
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+$erro = [];
 
-if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['email'], $_POST['senha'], $_POST['tipo_usuario'])) {
+if (isset($_POST['ok'])) {
+    $email = $mysqli->escape_string($_POST['email']);
 
-    $email = trim($_POST['email']);
-    $senha = trim($_POST['senha']);
-    $tipo_usuario = (int)$_POST['tipo_usuario'];
+    // Validação do e-mail
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $erro[] = "E-mail inválido";
+    }
 
-    if (empty($email) || empty($senha) || $_POST['tipo_usuario'] === "") {
-        echo "Preencha todos os campos.";
-    } else {
-        $sql_code = "SELECT * FROM usuarios WHERE usu_email = ? AND usu_tipo_usuario = ? AND usu_status = 1";
-        $stmt = $conn->prepare($sql_code);
-        $stmt->bind_param("si", $email, $tipo_usuario);
-        $stmt->execute();
-        $result = $stmt->get_result();
+    // Verifica se existe e busca o número do WhatsApp
+    $sql = "
+        SELECT l.livr_whatsapp 
+        FROM usuarios u
+        JOIN livrarias l ON u.usu_id = l.livr_id
+        WHERE u.usu_email = '$email'
+    ";
+    $query = $mysqli->query($sql) or die($mysqli->error);
+    $dados = $query->fetch_assoc();
 
-        if ($result->num_rows === 1) {
-            $usuario_db = $result->fetch_assoc();
+    if ($query->num_rows == 0) {
+        $erro[] = "E-mail não encontrado no sistema.";
+    }
 
-            if ($senha === $usuario_db['usu_senha']) {
-                $_SESSION['id'] = $usuario_db['usu_id'];
-                $_SESSION['nome'] = $usuario_db['usu_nome'];
-                $_SESSION['tipo'] = $usuario_db['usu_tipo_usuario'];
+    if (count($erro) == 0) {
+        $novaSenha = substr(md5(time()), 0, 6);
+        $senhaCriptografada = $novaSenha; // ou password_hash($novaSenha, PASSWORD_DEFAULT);
 
-                switch ($usuario_db['usu_tipo_usuario']) {
-                    case 0:
-                    case 1:
-                        header("Location: liv e res/index.php");
-                        break;
-                    case 2:
-                        header("Location: administrador/home.php");
-                        break;
-                    default:
-                        echo "Tipo de usuário inválido.";
-                }
+        // Atualiza a senha no banco
+        $update = "UPDATE usuarios SET usu_senha = '$senhaCriptografada' WHERE usu_email = '$email'";
+        if ($mysqli->query($update)) {
+            // Envia por WhatsApp com CallMeBot
+            $numero = preg_replace('/[^0-9]/', '', $dados['livr_whatsapp']); // limpa caracteres
+            $mensagem = urlencode("Sua nova senha temporária é: $novaSenha");
 
-                exit();
-            } else {
-                echo "Falha ao logar! Senha incorreta.";
-            }
+            $apikey = "SEU_APIKEY_AQUI"; // substitua pela sua chave
+            $url = "https://api.callmebot.com/whatsapp.php?phone=$numero&text=$mensagem&apikey=$apikey";
+
+            $resposta = file_get_contents($url);
+
+            echo "<p style='color:green;'>A nova senha foi enviada para o WhatsApp cadastrado.</p>";
         } else {
-            echo "Falha ao logar! E-mail incorreto ou usuário não autorizado.";
+            echo "<p style='color:red;'>Erro ao atualizar a senha.</p>";
         }
-
-        $stmt->close();
+    } else {
+        foreach ($erro as $msg) {
+            echo "<p style='color:red;'>$msg</p>";
+        }
     }
 }
 ?>
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="login.css">
-    <title>Administrador BC - Login</title>
-</head>
-<body>
-    <div class="container">
-        <!-- Seleção de tipo -->
-        <h1>Escolha o tipo de usuário</h1>
-        <div class="form-container select-type" id="selectType">
-          
-            <select id="tipo_usuario" required>
-                <option value="">Selecione o tipo de usuário</option>
-                <option value="2">Administrador</option>
-                <option value="0">Resenhista</option>
-                <option value="1">Livraria</option>
-            </select>
-            <button type="button" id="proximoBtn" class="btn">Próximo</button>
-        </div>
-
-        <!-- Login -->
-        <div class="form-container sign-in" id="loginContainer" style="display: none;">
-            <form action="" method="POST">
-                <h1>Entrar</h1>
-                <input type="hidden" name="tipo_usuario" id="tipoSelecionado">
-                <input type="email" name="email" placeholder="E-mail" required>
-                <input type="password" name="senha" placeholder="Senha" required>
-                <a href="esquecisenha.php" style="color: #fff">Esqueci a senha</a>
-                <button class="btn">Entrar</button>
-
-                <a id="cadastro-link" href="cadastrar-usuario.php" style="display: none; color: #fff; margin-top: 10px;">Criar conta como livraria</a>
-
-                <a id="resenhista-link" href="#" target="_blank" style="display: none; color: #fff; margin-top: 10px;">Quero me tornar um resenhista</a>
-            </form>
-        </div>
-    </div>
-
-    <script>
-        const proximoBtn = document.getElementById('proximoBtn');
-        const tipoUsuario = document.getElementById('tipo_usuario');
-        const loginContainer = document.getElementById('loginContainer');
-        const tipoSelecionado = document.getElementById('tipoSelecionado');
-        const cadastroLink = document.getElementById('cadastro-link');
-        const resenhistaLink = document.getElementById('resenhista-link');
-        const selectTypeDiv = document.getElementById('selectType');
-
-        proximoBtn.addEventListener('click', () => {
-            const tipo = tipoUsuario.value;
-            if (!tipo) {
-                alert("Por favor, selecione o tipo de usuário.");
-                return;
-            }
-
-            tipoSelecionado.value = tipo;
-            loginContainer.style.display = 'block';
-            selectTypeDiv.style.display = 'none';
-
-            // Mostrar links dinâmicos
-            if (tipo === "1") {
-                cadastroLink.style.display = 'inline-block';
-                resenhistaLink.style.display = 'none';
-            } else if (tipo === "0") {
-                cadastroLink.style.display = 'none';
-                resenhistaLink.style.display = 'inline-block';
-                const mensagem = encodeURIComponent("Olá, gostaria de me tornar um resenhista na plataforma BACKSTAGE Community.");
-                resenhistaLink.href = `https://wa.me/5514997460253?text=${mensagem}`;
-            } else {
-                cadastroLink.style.display = 'none';
-                resenhistaLink.style.display = 'none';
-            }
-        });
-    </script>
-</body>
-</html>
