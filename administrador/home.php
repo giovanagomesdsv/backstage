@@ -77,6 +77,9 @@ include "conexao-banco/conexao.php";
             <h3>Olá, <?php echo $_SESSION['nome']; ?>, <br> Seja bem-vindo!</h3>
         </div>
         <div class="avaliar">
+           <div class="textnotificaçao"> AVALIAR</div>
+
+
             <?php
             $sql = "SELECT resenha_titulo, res_nome_fantasia, resenha_id, livro_foto FROM RESENHAS INNER JOIN RESENHISTAS ON resenhistas.res_id = resenhas.res_id INNER JOIN LIVROS ON resenhas.livro_id = livroS.livro_id WHERE resenha_status = 0";
 
