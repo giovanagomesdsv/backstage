@@ -95,6 +95,7 @@ include "../protecao.php";
     resenhistas.res_telefone,
     titulo.tit_nome,
     resenhistas.res_foto,
+    usuarios.usu_nome,
     COUNT(resenhas.res_id) AS total_resenhas
 FROM 
     resenhistas
@@ -102,14 +103,14 @@ LEFT JOIN
     resenhas ON resenhistas.res_id = resenhas.res_id
 LEFT JOIN 
     titulo ON resenhistas.tit_id = titulo.tit_id
-WHERE  
-    resenhistas.res_nome_fantasia LIKE '%$pesquisa%'
+LEFT JOIN usuarios ON  usuarios.usu_id = resenhistas.res_id
 GROUP BY 
+    usuarios.usu_nome,
     resenhistas.res_id,
     resenhistas.res_nome_fantasia,
     resenhistas.res_telefone,
     titulo.tit_nome,
-    resenhistas.res_foto;
+    resenhistas.res_foto
 ";
                    $sql_query = $conn->query($sql_code) or die("Erro ao consultar: " . $conn->error);
 
@@ -122,7 +123,7 @@ GROUP BY
             <div>
                 <div>
                     <a href=\"https://wa.me/{$dados['res_telefone']}?text=$mensagem\" target=\"_blank\"><img src='../imagens/resenhistas/{$dados['res_foto']}' alt='Foto do Resenhista'></a>
-                    <h3>{$dados['nome']}</h3>
+                    <h3>{$dados['usu_nome']}</h3>
                     <p><strong>Pseudônimo:</strong> {$dados['res_nome_fantasia']}</p>
                     <p><strong>Titulo:</strong> {$dados['tit_nome']}</p>
                 </div>
@@ -141,12 +142,12 @@ GROUP BY
 
         <?php
         // Consulta que obtém informações dos resenhistas e total de resenhas
-        $consulta = "
-            SELECT 
-    resenhistas.res_nome_fantasia,
+        $consulta = " SELECT 
+            resenhistas.res_nome_fantasia,
     resenhistas.res_telefone,
     titulo.tit_nome,
     resenhistas.res_foto,
+    usuarios.usu_nome,
     COUNT(resenhas.res_id) AS total_resenhas
 FROM 
     resenhistas
@@ -154,13 +155,14 @@ LEFT JOIN
     resenhas ON resenhistas.res_id = resenhas.res_id
 LEFT JOIN 
     titulo ON resenhistas.tit_id = titulo.tit_id
+LEFT JOIN usuarios ON  usuarios.usu_id = resenhistas.res_id
 GROUP BY 
+    usuarios.usu_nome,
     resenhistas.res_id,
     resenhistas.res_nome_fantasia,
     resenhistas.res_telefone,
     titulo.tit_nome,
     resenhistas.res_foto
-
         ";
 
         if ($resp_consulta = mysqli_query($conn, $consulta)) {
@@ -172,7 +174,7 @@ GROUP BY
             <div>
                 <div>
                     <a href=\"https://wa.me/{$linha['res_telefone']}?text=$mensagem\" target=\"_blank\"><img src='../imagens/resenhistas/{$linha['res_foto']}' alt='Foto do Resenhista'></a>
-                    <h3>{$linha['nome']}</h3>
+                     <h3>{$linha['usu_nome']}</h3>
                     <p><strong>Pseudônimo:</strong> {$linha['res_nome_fantasia']}</p>
                     <p><strong>Titulo:</strong> {$linha['tit_nome']}</p>
                 </div>

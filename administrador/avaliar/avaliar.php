@@ -64,5 +64,3 @@ include "conexao-banco/conexao.php";
 
 ?>
 
-</body>
-</html>
