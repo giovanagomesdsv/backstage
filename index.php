@@ -82,7 +82,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['email'], $_POST['senh
                 <input type="hidden" name="tipo_usuario" id="tipoSelecionado">
                 <input type="email" name="email" placeholder="E-mail" required>
                 <input type="password" name="senha" placeholder="Senha" required>
-                <a href="esqueci-senha.php" style="color: #fff">Esqueci a senha</a>
+                <a href="esqueci a senha/esqueci-senha.php" style="color: #fff">Esqueci a senha</a>
                 <button class="btn">Entrar</button>
 
                 <a id="cadastro-link" href="cadastrar-usuario.php" style="display: none; color: #fff; margin-top: 10px;">Criar conta como livraria</a>
