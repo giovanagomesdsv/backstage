@@ -94,7 +94,7 @@ header {
     font-size: 1rem;
     margin-top: 1rem;
     padding-left: 2rem;
-    border: solid 1px red;
+   
     
 }
 
@@ -103,7 +103,7 @@ header {
     margin-bottom: 5rem;
     width: 100%;
    
-    border: solid 1px red;
+  
 }
 .sidebar ul li a .link_name{
     margin-left: 1.4rem;
@@ -143,14 +143,14 @@ header {
 }
 .sidebar.abrir .sair{
     border: 1px solid;
-    width: 3rem;
+    width: 2rem;
     display: flex;
-    align-items: left;
-    justify-content: left;
+    align-items: center;
+    justify-content: center;
     height: 2.5rem;
-    border-radius: 50%;
-    margin: 40% 0 0 50%;
-    transition: .2s;
+    border-radius: 30%;
+    
+    transition: 0.2s;
     color: var(--secundaria)
 
 }
@@ -166,7 +166,7 @@ header {
 main {
     height: 100vh;
     width: 80%;
-    border: 1px solid red;
+   
     margin: 0 10%;
     display: flex;
     align-items: center;
