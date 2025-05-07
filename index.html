@@ -2,14 +2,14 @@
 session_start();
 include "administrador/conexao-banco/conexao.php";
 
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+error_reporting(E_ALL); // reportar todos os erros
+ini_set('display_errors', 1); // muda a configuração php, ativando (1) a exibição de erros
 
-if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['email'], $_POST['senha'], $_POST['tipo_usuario'])) {
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['email'], $_POST['senha'], $_POST['tipo_usuario'])) { // isset() garante que esses campos foram enviados e não estão null
 
-    $email = trim($_POST['email']);
+    $email = trim($_POST['email']); //trim() remove espaços em branco no início e no fim da string
     $senha = trim($_POST['senha']);
-    $tipo_usuario = (int)$_POST['tipo_usuario'];
+    $tipo_usuario = (int)$_POST['tipo_usuario']; // (int) força a conversão do valor para inteiro, garantindo que você está lidando com um número (útil por segurança e organização).
 
     if (empty($email) || empty($senha) || $_POST['tipo_usuario'] === "") {
         echo "Preencha todos os campos.";
