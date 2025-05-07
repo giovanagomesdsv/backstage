@@ -65,36 +65,39 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['email'], $_POST['senh
 
 <body>
     <div class="container">
+        <!-- Lado esquerdo (logo) -->
         <div class="left">
-            <img src="caminho/para/sua-logo.png" alt="Logo Bibliófilos" class="logo">
+            <img src="backstage.jpeg" alt="Logo Bibliófilos" class="logo">
         </div>
+    
+        <!-- Lado direito -->
         <div class="right">
-            <h2>SELECIONE O USUÁRIO</h2>
-            <select id="tipo_usuario" required>
-                <option value="">Selecione o tipo de usuário</option>
-                <option value="2">Administrador</option>
-                <option value="0">Resenhista</option>
-                <option value="1">Livraria</option>
-            </select>
-            <button type="button" id="proximoBtn" class="btn">Próximo</button>
-        </div>
-    </div>
-        <!-- Tela de Login -->
-        <div class="form-container sign-in" id="loginContainer" style="display: none;">
-            <form action="" method="POST">
-                <h1>Entrar</h1>
-                <input type="hidden" name="tipo_usuario" id="tipoSelecionado">
-                <input type="email" name="email" placeholder="E-mail" required>
-                <input type="password" name="senha" placeholder="Senha" required>
-                <a href="esqueci a senha/esqueci-senha.php" style="color: #fff">Esqueci a senha</a>
-                <button class="btn" id="proximoBtn">ENTRAR</button>
+            <!-- Tela de seleção -->
+            <div class="form-container select-type" id="selectType">
+                <h2>SELECIONE O USUÁRIO</h2>
+                <select id="tipo_usuario">
+                    <option disabled selected>SELECIONE O TIPO DE USUARIO</option>
+                    <option value="2">Administrador</option>
+                    <option value="0">Resenhista</option>
+                    <option value="1">Livraria</option>
+                </select>
+                <button class="btn" id="proximoBtn">PRÓXIMO</button>
+            </div>
     
-                <!-- Link para criar conta como livraria -->
-                <a id="cadastro-link" href="cadastrar-usuario.php" style="display: none; color: #fff; margin-top: 10px;">Criar conta como livraria</a>
+            <!-- Tela de login (inicialmente oculta) -->
+            <div class="form-container sign-in" id="loginContainer" style="display: none;">
+                <form action="" method="POST">
+                    <h1>LOGIN</h1>
+                    <input type="hidden" name="tipo_usuario" id="tipoSelecionado">
+                    <input type="email" name="email" placeholder="EMAIL" required>
+                    <input type="password" name="senha" placeholder="SENHA" required>
+                    <a href="esqueci a senha/esqueci-senha.php">ESQUECEU A SENHA</a>
+                    <button class="btn" type="submit">ENTRAR</button>
     
-                <!-- Link para resenhista -->
-                <a id="resenhista-link" href="#" target="_blank" style="display: none; color: #fff; margin-top: 10px;">Quero me tornar um resenhista</a>
-            </form>
+                    <a id="cadastro-link" href="cadastrar-usuario.php" style="display: none;">Criar conta como livraria</a>
+                    <a id="resenhista-link" href="#" target="_blank" style="display: none;">Quero me tornar um resenhista</a>
+                </form>
+            </div>
         </div>
     </div>
 
