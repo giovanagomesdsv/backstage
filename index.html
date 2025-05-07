@@ -76,7 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['email'], $_POST['senh
             <div class="form-container select-type" id="selectType">
                 <h2>SELECIONE O USUÁRIO</h2>
                 <select id="tipo_usuario">
-                    <option disabled selected>SELECIONE O TIPO DE USUARIO</option>
+                    <option value="" disabled selected>SELECIONE O TIPO DE USUARIO</option>
                     <option value="2">Administrador</option>
                     <option value="0">Resenhista</option>
                     <option value="1">Livraria</option>
@@ -100,8 +100,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['email'], $_POST['senh
             </div>
         </div>
     </div>
-
-    <script src="loginscript.js"></script>
 
     <script>
         const proximoBtn = document.getElementById('proximoBtn');
