@@ -2,8 +2,7 @@
 include "../conexao-banco/conexao.php";
     $email = $_POST['email'];
     $nome = $_POST['nome'];
-   /* $senha = password_hash($_POST['senha'], PASSWORD_BCRYPT);*/
-    $senha = $_POST['senha'];
+   $senha = password_hash($_POST['senha'], PASSWORD_BCRYPT);
     $usuario = $_POST['usuario'];
 
     $sql_code = "INSERT INTO USUARIOS ( usu_nome, usu_email, usu_senha, usu_tipo_usuario) VALUES (' $nome', '$email',  '$senha',  '$usuario')";

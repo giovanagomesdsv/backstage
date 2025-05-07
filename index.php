@@ -1,4 +1,4 @@
-<!--<?php
+<?php
 session_start();
 include "administrador/conexao-banco/conexao.php";
 
@@ -55,16 +55,24 @@ $usuario_db agora contém os dados encontrados que foram pedidos na consulta SQL
 
                 exit();
             } else {
-                echo "Falha ao logar! Senha incorreta.";
+                echo "
+                 <script>
+                  window.alert('Falha ao logar! Senha incorreta');
+                 </script>
+                ";
             }
         } else {
-            echo "Falha ao logar! E-mail incorreto ou usuário não autorizado.";
+            echo "
+              <script>
+                  window.alert('Falha ao logar! E-mail incorreto ou usuário não autorizado.');
+              </script>
+            ";
         }
 
         $stmt->close();
     }
 }
-?>-->
+?>
 
 <!DOCTYPE html>
 <html lang="pt-BR">
