@@ -75,8 +75,9 @@ header {
     flex-direction: row;
     align-items: center;
     gap: 1rem;
-    margin-bottom: 8rem;
-    margin-top: 8rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+
     text-align: center;
     width: 100%;         /* <- isso é importante */
   
@@ -91,19 +92,24 @@ header {
 .sidebar ul{
     height: 100%;
     font-size: 1rem;
-    margin-top: 2rem;
+    margin-top: 1rem;
     padding-left: 2rem;
+    border: solid 1px red;
+    
 }
 
 
 .sidebar ul li {
-    margin-top: 1.3rem;
+    margin-bottom: 5rem;
     width: 100%;
-
+   
+    border: solid 1px red;
 }
 .sidebar ul li a .link_name{
     margin-left: 1.4rem;
     display: none;
+    
+    
 }
 .sidebar ul li a:hover {
     width: 100%;
@@ -114,11 +120,12 @@ header {
 }
 .sidebar ul .fix {
     background: var(--principal);
-    padding: 0.3rem 0.5rem;
+    padding:0.1rem 0.5rem;
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
-    border-bottom: 1px solid;
-    margin-top: 10px;
+  
+
+    
 }
 
 
@@ -132,17 +139,20 @@ header {
 }
 .sidebar.abrir .link_name{
     display: block;
+    
 }
 .sidebar.abrir .sair{
     border: 1px solid;
     width: 3rem;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: left;
+    justify-content: left;
     height: 2.5rem;
     border-radius: 50%;
     margin: 40% 0 0 50%;
     transition: .2s;
+    color: var(--secundaria)
+
 }
 .sidebar.abrir .sair:hover{
     background-color: #406E96;
