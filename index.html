@@ -65,9 +65,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['email'], $_POST['senh
 
 <body>
     <div class="container">
-        <!-- Seleção de tipo de usuário -->
-        <h1>Escolha o tipo de usuário</h1>
-        <div class="form-container select-type" id="selectType">
+        <div class="left">
+            <img src="caminho/para/sua-logo.png" alt="Logo Bibliófilos" class="logo">
+        </div>
+        <div class="right">
+            <h2>SELECIONE O USUÁRIO</h2>
             <select id="tipo_usuario" required>
                 <option value="">Selecione o tipo de usuário</option>
                 <option value="2">Administrador</option>
@@ -76,7 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['email'], $_POST['senh
             </select>
             <button type="button" id="proximoBtn" class="btn">Próximo</button>
         </div>
-    
+    </div>
         <!-- Tela de Login -->
         <div class="form-container sign-in" id="loginContainer" style="display: none;">
             <form action="" method="POST">
@@ -85,7 +87,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['email'], $_POST['senh
                 <input type="email" name="email" placeholder="E-mail" required>
                 <input type="password" name="senha" placeholder="Senha" required>
                 <a href="esqueci a senha/esqueci-senha.php" style="color: #fff">Esqueci a senha</a>
-                <button class="btn">Entrar</button>
+                <button class="btn" id="proximoBtn">ENTRAR</button>
     
                 <!-- Link para criar conta como livraria -->
                 <a id="cadastro-link" href="cadastrar-usuario.php" style="display: none; color: #fff; margin-top: 10px;">Criar conta como livraria</a>

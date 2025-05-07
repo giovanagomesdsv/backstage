@@ -1,153 +1,82 @@
-/* Resetando margin e padding de todos os elementos */
 * {
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-  }
-  
-  /* Configurações globais do body */
-  body {
-    background-color: #e6e6e6;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  /* Container que envolve o layout */
-  .container, .box {
-    display: flex;
-    background-color: #3f6c8f; /* Azul mais claro */
-    border-radius: 20px;
-    overflow: hidden;
-    width: 800px;
-    max-width: 95vw;
-    height: 450px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-  }
-  
-  /* Lado esquerdo (imagem e logo) */
-  .left, .box-left {
-    background-color: #2c4b65; /* Azul escuro */
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .left img, .box-left img {
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-    object-fit: cover;
-  }
-  
-  /* Lado direito (formulários e botões) */
-  .right, .box-right {
-    flex: 2;
-    padding: 50px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: white;
-  }
-  
-  /* Cabeçalho da seleção de usuário */
-  .user-selection h2 {
-    margin-bottom: 30px;
-    background-color: #2c4b65;
-    padding: 15px 30px;
-    border-radius: 5px;
-  }
-  
-  /* Dropdown para seleção de tipo de usuário */
-  .user-selection select {
-    padding: 10px;
-    font-size: 16px;
-    width: 300px;
-    border: none;
-    border-radius: 3px;
-    background-color: #f0f0f0;
-    appearance: none;
-    margin-bottom: 30px;
-  }
-  
-  /* Botão de ação */
-  .user-selection .btn {
-    background-color: #2c4b65;
-    color: white;
-    border: none;
-    padding: 10px 40px;
-    font-size: 16px;
-    border-radius: 3px;
-    cursor: pointer;
-  }
-  
-  .user-selection .btn:hover {
-    background-color: #1e374d;
-  }
-  
-  /* Estilos para a tela de login */
-  .login-screen {
-    display: none;
-    width: 100%;
-  }
-  
-  .login-screen h2 {
-    background-color: #2c4b65;
-    padding: 10px 40px;
-    border-radius: 5px;
-    margin-bottom: 25px;
-  }
-  
-  /* Estilos para o grupo de inputs */
-  .input-group {
-    width: 100%;
-    margin-bottom: 15px;
-  }
-  
-  .input-group input {
-    width: 100%;
-    padding: 10px;
-    font-size: 14px;
-    border: none;
-    border-radius: 3px;
-    background-color: #f0f0f0;
-  }
-  
-  .input-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-size: 14px;
-    color: white;
-  }
-  
-  /* Estilos do link "Esqueceu a senha" */
-  .forgot-password {
-    font-size: 12px;
-    margin: 10px 0;
-    text-align: center;
-    color: #ffffff;
-    cursor: pointer;
-    border-top: 1px solid #ddd;
-    padding-top: 10px;
-    width: 100%;
-  }
-  
-  /* Estilos do botão de login */
-  .login-screen .btn {
-    background-color: #2c4b65;
-    color: white;
-    border: none;
-    padding: 10px 40px;
-    font-size: 16px;
-    border-radius: 3px;
-    cursor: pointer;
-    margin-top: 10px;
-  }
-  
-  .login-screen .btn:hover {
-    background-color: #1e374d;
-  }
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: #e0e0e0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  display: flex;
+  width: 800px;
+  height: 450px;
+  background-color: #4a7297;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+.left {
+  flex: 1;
+  background-color: #2b4b65;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.right {
+  flex: 2;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.right h2 {
+  background-color: #2b4b65;
+  padding: 10px 20px;
+  margin-bottom: 30px;
+  border-radius: 5px;
+}
+
+select {
+  width: 300px;
+  padding: 10px;
+  font-size: 16px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 3px;
+  appearance: none;
+  background-color: #f0f0f0;
+  color: #000;
+}
+
+.btn {
+  background-color: #2b4b65;
+  color: white;
+  padding: 10px 40px;
+  font-size: 16px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #1e374d;
+}
