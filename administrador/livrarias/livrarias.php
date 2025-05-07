@@ -113,7 +113,7 @@ ON
                 </a>
                 <p>{$dados['liv_nome']}</p>
                 <p>{$dados['liv_email']}</p>
-                <p>{$dados['liv_endereco']}. {$dados['liv_cidade']} ({$dados['liv_estado']})</p>
+                <p> {$dados['liv_cidade']} ({$dados['liv_estado']})</p>
                 <div>{$dados['total_livros']}</div>
             </div>
             ";
@@ -154,7 +154,7 @@ GROUP BY
                 </a>
                 <p>{$registro['liv_nome']}</p>
                 <p>{$registro['liv_email']}</p>
-                <p>{$registro['liv_endereco']}. {$registro['liv_cidade']} ({$registro['liv_estado']})</p>
+                <p>{$registro['liv_cidade']} ({$registro['liv_estado']})</p>
                 <div>{$registro['total_livros']}</div>
             </div>
             ";

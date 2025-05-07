@@ -70,6 +70,17 @@ header {
     border: 1px solid;
     border-radius: 30%;
 } 
+.nav-list li a{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 8rem;
+    margin-top: 8rem;
+    text-align: center;
+    width: 100%;         /* <- isso é importante */
+  
+}
 .logo_name {
     width: 100%;
     display: none;
@@ -88,20 +99,26 @@ header {
 .sidebar ul li {
     margin-top: 1.3rem;
     width: 100%;
+
 }
 .sidebar ul li a .link_name{
     margin-left: 1.4rem;
     display: none;
 }
-.sidebar ul li:hover {
-    border-bottom: 1px solid;
+.sidebar ul li a:hover {
+    width: 100%;
+    color:var(--text);
+   
+    border-bottom: 1px solid var(--text); 
+
 }
 .sidebar ul .fix {
     background: var(--principal);
-    padding: .5rem;
+    padding: 0.3rem 0.5rem;
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
     border-bottom: 1px solid;
+    margin-top: 10px;
 }
 
 

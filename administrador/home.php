@@ -95,7 +95,7 @@ include "conexao-banco/conexao.php";
                             <p>- {$resposta['res_nome_fantasia']}</p>
                         </div>
                         <div class='acao'>
-                           <a href='avaliar.php?id={$resposta['resenha_id']}'>
+                           <a href='avaliar/avaliar.php?id={$resposta['resenha_id']}'>
                               <button class='botao'>Avaliar</button>
                            </a>
                         </div>
@@ -118,7 +118,7 @@ include "conexao-banco/conexao.php";
                             <p>- {$res['usu_nome']}</p>
                         </div>
                         <div class='acao'>
-                           <a href='avaliar.php?id={$res['usu_id']}'>
+                           <a href='avaliar/avaliar-livraria.php?id={$res['usu_id']}'>
                               <button class='botao'>Avaliar</button>
                            </a>
                         </div>
