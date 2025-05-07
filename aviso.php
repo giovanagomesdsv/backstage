@@ -8,7 +8,7 @@
 <body>
     <img src="" alt="">
     <h2>Parabéns por se cadastrar!</h2>
-    <p>Em breve entraremos em contato por e-mail para que posso acessar nosso site por meio do login.</p>
+    <p>Em breve entraremos em contato por e-mail para que possa acessar nosso site por meio do login.</p>
     <p>Até mais!</p>
 </body>
 </html>

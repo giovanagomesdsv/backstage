@@ -125,42 +125,60 @@ ON
         </div>
 
     <div>
-        <?php
-        $consulta = "SELECT 
-    liv_nome,liv_cidade,liv_estado,liv_endereco, liv_email,liv_foto, liv_telefone, livrarias.liv_id,
-    COUNT(livrarias_livros.liv_livro_id) AS total_livros 
-FROM 
-    livrarias
-LEFT JOIN 
-    livrarias_livros
-ON 
-    livrarias.liv_id =  livrarias_livros.liv_id
-GROUP BY 
-    liv_nome,liv_cidade,liv_estado,liv_endereco, liv_email,liv_foto
-
+    <?php
+// Consulta SQL preparada
+$consulta = "
+    SELECT 
+        liv_nome,
+        liv_cidade,
+        liv_estado,
+        liv_endereco,
+        liv_email,
+        liv_foto,
+        liv_telefone,
+        livrarias.liv_id,
+        COUNT(livrarias_livros.liv_livro_id) AS total_livros 
+    FROM 
+        livrarias
+    LEFT JOIN 
+        livrarias_livros ON livrarias.liv_id = livrarias_livros.liv_id
+    GROUP BY 
+        liv_nome, liv_cidade, liv_estado, liv_endereco, liv_email, liv_foto, liv_telefone
 ";
 
-        if ($resp_consulta = mysqli_query($conn, $consulta)) {
+if ($stmt = $conn->prepare($consulta)) {
+    // Executa a consulta
+    $stmt->execute();
 
-            while ($registro = mysqli_fetch_array($resp_consulta)) {
-                // Mensagem personalizada para o WhatsApp
-                $mensagem = urlencode("Olá, aqui fala a admiistradora do site Bibliófilos community, gostaria de solicitar mais informações sobre sua livraria/ movimentações no nosso site!");
+    // Associa os resultados
+    $stmt->bind_result($liv_nome, $liv_cidade, $liv_estado, $liv_endereco, $liv_email, $liv_foto, $liv_telefone, $liv_id, $total_livros);
 
-                echo "
-            <div>
-                <a href=\"https://wa.me/{$registro['liv_telefone']}?text=$mensagem\" target=\"_blank\">
-                  <img src=\"../imagens/livrarias/{$registro['liv_foto']}\" alt=\"Logo da livraria\">
-                   
-                </a>
-                <p>{$registro['liv_nome']}</p>
-                <p>{$registro['liv_email']}</p>
-                <p>{$registro['liv_cidade']} ({$registro['liv_estado']})</p>
-                <div>{$registro['total_livros']}</div>
-            </div>
-            ";
-            }
-        }
-        ?>
+    // Loop para exibir os resultados
+    while ($stmt->fetch()) {
+        // Mensagem personalizada para o WhatsApp
+        $mensagem = urlencode("Olá, aqui fala a administradora do site Bibliófilos Community, gostaria de solicitar mais informações sobre sua livraria/ movimentações no nosso site!");
+
+        // Exibindo os dados das livrarias de maneira segura
+        echo "
+        <div>
+            <a href=\"https://wa.me/{$liv_telefone}?text=$mensagem\" target=\"_blank\">
+                <img src=\"../imagens/livrarias/{$liv_foto}\" alt=\"Logo da livraria\">
+            </a>
+            <p>" . htmlspecialchars($liv_nome, ENT_QUOTES, 'UTF-8') . "</p>
+            <p>" . htmlspecialchars($liv_email, ENT_QUOTES, 'UTF-8') . "</p>
+            <p>" . htmlspecialchars($liv_cidade, ENT_QUOTES, 'UTF-8') . " ({$liv_estado})</p>
+            <div>Total de Livros: {$total_livros}</div>
+        </div>
+        ";
+    }
+
+    // Fecha o statement
+    $stmt->close();
+} else {
+    echo "<p>Erro ao consultar as livrarias. Tente novamente mais tarde.</p>";
+}
+?>
+
       
     </div>
 

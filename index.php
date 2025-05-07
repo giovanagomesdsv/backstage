@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "administrador/conexao-banco/conexao.php";
+include "conexao.php";
 
 error_reporting(E_ALL); // reportar todos os erros
 ini_set('display_errors', 1); // muda a configuração php, ativando (1) a exibição de erros
@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['email'], $_POST['senh
 
 $usuario_db agora contém os dados encontrados que foram pedidos na consulta SQL*/
 
-           if (password_verify($senha, $usuario_db['usu_senha'])) { 
+           if ($senha === $usuario_db['usu_senha']) {  // password_verify($senha, $usuario_db['usu_senha'])
                 $_SESSION['id'] = $usuario_db['usu_id'];
                 $_SESSION['nome'] = $usuario_db['usu_nome'];
                 $_SESSION['tipo'] = $usuario_db['usu_tipo_usuario'];

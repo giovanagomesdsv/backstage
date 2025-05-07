@@ -145,9 +145,13 @@ include "../protecao.php";
         <div>
             <?php
             $consulta = "SELECT usu_nome, usu_id, usu_status, usu_tipo_usuario FROM usuarios order by usu_data_criacao desc";
+            $stmt=$conn->prepare($consulta);
+           
 
-            if ($card = mysqli_query($conn, $consulta)) {
-                while ($row = mysqli_fetch_array($card)) {
+            if ( $stmt &&  $stmt->execute()) {
+                $result=$stmt->get_result();
+
+                while ($row = $result->fetch_assoc()) {
 
                     if ($row['usu_status'] == 0) {
 
@@ -225,20 +229,11 @@ include "../protecao.php";
                          ";
                         }
                     }
-
-                   
                 }
             }
-                
-
-
-
+            $stmt->close();
             ?>
         </div>
-
-
-
-
     </main>
 
     <script src="../script.js"></script>

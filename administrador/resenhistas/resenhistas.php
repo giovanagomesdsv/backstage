@@ -70,16 +70,16 @@ include "../protecao.php";
     </div>
     <div>
 
-    
-<!--EXIBE OS CARDS DAS LIVRARIAS-->
-<div class="busca">
+
+        <!--EXIBE OS CARDS DAS LIVRARIAS-->
+        <div class="busca">
             <form action="" method="GET">
                 <input type="text" name="busca" placeholder="Busque os resenhistas...">
                 <button type="submit">Pesquisar</button>
             </form>
         </div>
 
-       
+
         <div class="pesquisa">
             <?php
             if (!isset($_GET['busca']) || empty($_GET['busca'])) {
@@ -112,14 +112,14 @@ GROUP BY
     titulo.tit_nome,
     resenhistas.res_foto
 ";
-                   $sql_query = $conn->query($sql_code) or die("Erro ao consultar: " . $conn->error);
+                $sql_query = $conn->query($sql_code) or die("Erro ao consultar: " . $conn->error);
 
                 if ($sql_query->num_rows == 0) {
                     echo "<div class='resultados'><h3>Nenhum resultado encontrado!</h3></div>";
                 } else {
 
                     while ($dados = $sql_query->fetch_assoc()) {
-                         echo "
+                        echo "
             <div>
                 <div>
                     <a href=\"https://wa.me/{$dados['res_telefone']}?text=$mensagem\" target=\"_blank\"><img src='../imagens/resenhistas/{$dados['res_foto']}' alt='Foto do Resenhista'></a>
@@ -133,7 +133,6 @@ GROUP BY
             </div>
             ";
                     }
-
                 }
             }
             ?>
@@ -141,53 +140,68 @@ GROUP BY
 
 
         <?php
-        // Consulta que obtém informações dos resenhistas e total de resenhas
-        $consulta = " SELECT 
-            resenhistas.res_nome_fantasia,
-    resenhistas.res_telefone,
-    titulo.tit_nome,
-    resenhistas.res_foto,
-    usuarios.usu_nome,
-    COUNT(resenhas.res_id) AS total_resenhas
-FROM 
-    resenhistas
-LEFT JOIN 
-    resenhas ON resenhistas.res_id = resenhas.res_id
-LEFT JOIN 
-    titulo ON resenhistas.tit_id = titulo.tit_id
-LEFT JOIN usuarios ON  usuarios.usu_id = resenhistas.res_id
-GROUP BY 
-    usuarios.usu_nome,
-    resenhistas.res_id,
-    resenhistas.res_nome_fantasia,
-    resenhistas.res_telefone,
-    titulo.tit_nome,
-    resenhistas.res_foto
-        ";
+// Consulta de resenhistas com contagem de resenhas
+$consulta = "
+    SELECT 
+        resenhistas.res_nome_fantasia,
+        resenhistas.res_telefone,
+        titulo.tit_nome,
+        resenhistas.res_foto,
+        usuarios.usu_nome,
+        COUNT(resenhas.res_id) AS total_resenhas
+    FROM resenhistas
+    LEFT JOIN resenhas ON resenhistas.res_id = resenhas.res_id
+    LEFT JOIN titulo ON resenhistas.tit_id = titulo.tit_id
+    LEFT JOIN usuarios ON usuarios.usu_id = resenhistas.res_id
+    GROUP BY 
+        usuarios.usu_nome,
+        resenhistas.res_id,
+        resenhistas.res_nome_fantasia,
+        resenhistas.res_telefone,
+        titulo.tit_nome,
+        resenhistas.res_foto
+";
 
-        if ($resp_consulta = mysqli_query($conn, $consulta)) {
+if ($resp_consulta = mysqli_query($conn, $consulta)) {
+    while ($linha = mysqli_fetch_assoc($resp_consulta)) {
 
-            while ($linha = mysqli_fetch_array($resp_consulta)) {
-                $mensagem = urlencode("Olá, aqui fala a admistradora do site Bibliófilos community!");
+        // Sanitizar dados de saída
+        $nomeFantasia = htmlspecialchars($linha['res_nome_fantasia']);
+        $telefone = preg_replace('/[^0-9]/', '', $linha['res_telefone']); // só números
+        $titulo = htmlspecialchars($linha['tit_nome']);
+        $foto = htmlspecialchars($linha['res_foto']);
+        $nomeUsuario = htmlspecialchars($linha['usu_nome']);
+        $totalResenhas = (int) $linha['total_resenhas'];
 
-                echo "
-            <div>
-                <div>
-                    <a href=\"https://wa.me/{$linha['res_telefone']}?text=$mensagem\" target=\"_blank\"><img src='../imagens/resenhistas/{$linha['res_foto']}' alt='Foto do Resenhista'></a>
-                     <h3>{$linha['usu_nome']}</h3>
-                    <p><strong>Pseudônimo:</strong> {$linha['res_nome_fantasia']}</p>
-                    <p><strong>Titulo:</strong> {$linha['tit_nome']}</p>
-                </div>
-                <div>
-                    <p><strong>Total de Resenhas:</strong> {$linha['total_resenhas']}</p>
-                </div>
+        // Mensagem para o WhatsApp
+        $mensagem = urlencode("Olá, aqui fala a administradora do site Bibliófilos Community!");
+
+        // Verifica se a imagem existe
+        $caminhoImagem = "../imagens/resenhistas/" . $foto;
+        $imgTag = file_exists($caminhoImagem)
+            ? "<img src='$caminhoImagem' alt='Foto do Resenhista' style='width:100px;'>"
+            : "<div style='width:100px; height:100px; background:#ccc;'>Sem imagem</div>";
+
+        echo "
+        <div class='resenhista-box'>
+            <div class='resenhista-info'>
+                <a href='https://wa.me/{$telefone}?text={$mensagem}' target='_blank'>
+                    $imgTag
+                </a>
+                <h3>$nomeUsuario</h3>
+                <p><strong>Pseudônimo:</strong> $nomeFantasia</p>
+                <p><strong>Título:</strong> $titulo</p>
             </div>
-            ";
-            }
-        } else {
-            echo "<p>Erro ao executar a consulta: " . mysqli_error($conn) . "</p>";
-        }
-        ?>
+            <div class='resenha-contador'>
+                <p><strong>Total de Resenhas:</strong> $totalResenhas</p>
+            </div>
+        </div>
+        ";
+    }
+} else {
+    echo "<p>Erro ao executar a consulta: " . htmlspecialchars(mysqli_error($conn)) . "</p>";
+}
+?>
 
     </div>
     <script src="../script.js"></script>

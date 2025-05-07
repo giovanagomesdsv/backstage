@@ -80,54 +80,90 @@ include "conexao-banco/conexao.php";
            <div class="textnotificaçao"> AVALIAR</div>
 
 
-            <?php
-            $sql = "SELECT resenha_titulo, res_nome_fantasia, resenha_id, livro_foto FROM RESENHAS INNER JOIN RESENHISTAS ON resenhistas.res_id = resenhas.res_id INNER JOIN LIVROS ON resenhas.livro_id = livroS.livro_id WHERE resenha_status = 0";
+           <?php
+// Verificar conexão
+if (!$conn) {
+    die("Conexão falhou: " . mysqli_connect_error());
+}
 
-            if ($result = mysqli_query($conn, $sql)) {
-                while ($resposta = mysqli_fetch_array($result)) {
-                    echo "
-                    <div class='card'>
-                        <div class='imagem'>
-                            <img class='imglivro' src='../administrador/imagens/livros/{$resposta['livro_foto']}' alt=''>
-                        </div>
-                        <div class='info'>
-                            <p>{$resposta['resenha_titulo']}</p>
-                            <p>- {$resposta['res_nome_fantasia']}</p>
-                        </div>
-                        <div class='acao'>
-                           <a href='avaliar/avaliar.php?id={$resposta['resenha_id']}'>
-                              <button class='botao'>Avaliar</button>
-                           </a>
-                        </div>
-                    </div>             
-                    ";
-                }
-            }
+// --------------------- RESENHAS ---------------------
+$sql="SELECT resenha_titulo, res_nome_fantasia, resenha_id, livro_foto 
+    FROM RESENHAS 
+    INNER JOIN RESENHISTAS ON RESENHISTAS.res_id = RESENHAS.res_id 
+    INNER JOIN LIVROS ON RESENHAS.livro_id = LIVROS.livro_id 
+    WHERE resenha_status = 0";
 
-            $select = "SELECT usu_id, usu_email, usu_nome, liv_nome,liv_cidade,liv_estado,liv_endereco,liv_telefone,liv_email,liv_foto,liv_perfil,liv_social FROM usuarios INNER JOIN livrarias ON livrarias.liv_id = usuarios.usu_id WHERE usu_tipo_usuario = 1 AND usu_status = 0";
+$stmt = $conn->prepare($sql);
+$stmt->execute();
+$result = $stmt->get_result();
 
-            if ($resultado = mysqli_query($conn, $select)) {
-                while ($res = mysqli_fetch_array($resultado)) {
-                    echo "
-                    <div class='card'>
-                        <div class='imagem'>
-                            <img class='imglivro' src='../administrador/imagens/livrarias/{$res['liv_foto']}' alt=''>
-                        </div>
-                        <div class='info'>
-                            <p>{$res['liv_nome']}</p>
-                            <p>- {$res['usu_nome']}</p>
-                        </div>
-                        <div class='acao'>
-                           <a href='avaliar/avaliar-livraria.php?id={$res['usu_id']}'>
-                              <button class='botao'>Avaliar</button>
-                           </a>
-                        </div>
-                    </div>             
-                    ";
-                }
-            }
+if ($result->num_rows > 0) {
 
-            ?>
+    while ($res = $result->fetch_assoc()) {
+        $titulo = htmlspecialchars($res['resenha_titulo']); /*Previne ataques XSS (Cross-site scripting). Converte caracteres especiais HTML em entidades seguras. */
+        $autor = htmlspecialchars($res['res_nome_fantasia']);
+        $id = (int) $res['resenha_id']; //Garante que o valor seja tratado como número inteiro
+        $foto = htmlspecialchars($res['livro_foto']);
+
+        echo "
+        <div class='card'>
+            <div class='imagem'>
+                <img class='imglivro' src='../administrador/imagens/livros/{$foto}' alt=''>
+            </div>
+            <div class='info'>
+                <p>{$titulo}</p>
+                <p>- {$autor}</p>
+            </div>
+            <div class='acao'>
+               <a href='avaliar/avaliar.php?id={$id}'>
+                  <button class='botao'>Avaliar</button>
+               </a>
+            </div>
+        </div>
+        ";
+    }
+    $stmt->close();
+}
+
+// --------------------- LIVRARIAS ---------------------
+//uma forma difernte de fazer a mesma coisa acima
+$stmt2 = $conn->prepare("
+    SELECT usu_id, usu_nome, liv_nome, liv_foto 
+    FROM usuarios 
+    INNER JOIN livrarias ON livrarias.liv_id = usuarios.usu_id 
+    WHERE usu_tipo_usuario = 1 AND usu_status = 0
+");
+
+if ($stmt2 && $stmt2->execute()) {  //Verifica se a variável existe e não é falsa e executa em seguida
+    $result2 = $stmt2->get_result();
+
+    while ($liv = $result2->fetch_assoc()) {
+        $id = (int) $liv['usu_id'];
+        $livraria = htmlspecialchars($liv['liv_nome']);
+        $usuario = htmlspecialchars($liv['usu_nome']);
+        $foto = htmlspecialchars($liv['liv_foto']);
+
+        echo "
+        <div class='card'>
+            <div class='imagem'>
+                <img class='imglivro' src='../administrador/imagens/livrarias/{$foto}' alt=''>
+            </div>
+            <div class='info'>
+                <p>{$livraria}</p>
+                <p>- {$usuario}</p>
+            </div>
+            <div class='acao'>
+               <a href='avaliar/avaliar-livraria.php?id={$id}'>
+                  <button class='botao'>Avaliar</button>
+               </a>
+            </div>
+        </div>
+        ";
+    }
+    $stmt2->close();
+}
+?>
+
         </div>
 
 
