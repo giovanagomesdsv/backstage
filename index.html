@@ -14,30 +14,43 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['email'], $_POST['senh
     if (empty($email) || empty($senha) || $_POST['tipo_usuario'] === "") {
         echo "Preencha todos os campos.";
     } else {
-        $sql_code = "SELECT * FROM usuarios WHERE usu_email = ? AND usu_tipo_usuario = ? AND usu_status = 1";
-        $stmt = $conn->prepare($sql_code);
+        $sql_code = "SELECT * FROM usuarios WHERE usu_email = ? AND usu_tipo_usuario = ? AND usu_status = 1"; // Aqui está sendo criada uma query SQL com parâmetros (?) para evitar SQL Injection.
+        $stmt = $conn->prepare($sql_code); // Isso permite executar a mesma consulta várias vezes com diferentes valores de forma segura.
         $stmt->bind_param("si", $email, $tipo_usuario);
-        $stmt->execute();
-        $result = $stmt->get_result();
+        
+        /* Aqui os valores reais são vinculados aos ? da query.
+"si" indica os tipos dos parâmetros:
+"s" = string ($email)
+"i" = inteiro ($tipo_usuario) */
 
-        if ($result->num_rows === 1) {
+        $stmt->execute(); // Executa a query preparada com os valores vinculados.
+        $result = $stmt->get_result(); // Recupera o resultado da execução da query.
+
+
+        if ($result->num_rows === 1) { // evita login com múltiplos ou nenhum usuário correspondente.
             $usuario_db = $result->fetch_assoc();
 
-            if ($senha === $usuario_db['usu_senha']) {
+            /* fetch_assoc() pega o resultado da consulta como um array associativo, onde os nomes das colunas viram as chaves do array.
+
+$usuario_db agora contém os dados encontrados que foram pedidos na consulta SQL*/
+
+           if (password_verify($senha, $usuario_db['usu_senha'])) { 
                 $_SESSION['id'] = $usuario_db['usu_id'];
                 $_SESSION['nome'] = $usuario_db['usu_nome'];
                 $_SESSION['tipo'] = $usuario_db['usu_tipo_usuario'];
 
-                switch ($usuario_db['usu_tipo_usuario']) {
+                // Cria variáveis de sessão, que permitem manter o usuário logado durante a navegação no site.
+
+                switch ($usuario_db['usu_tipo_usuario']) { //O switch avalia o valor de usu_tipo_usuario, que indica o tipo de usuário
                     case 0:
                     case 1:
-                        header("Location: liv e res/index.php");
-                        break;
+                        header("Location: liv e res/index.php");            // Se usu_tipo_usuario for 0 ou 1, o usuário é redirecionado para a página
+                        break;                                              // O break impede que o código continue avaliando os outros cases
                     case 2:
                         header("Location: administrador/home.php");
                         break;
                     default:
-                        echo "Tipo de usuário inválido.";
+                        echo "Tipo de usuário inválido.";  // Se o valor de usu_tipo_usuario não for 0, 1 ou 2
                 }
 
                 exit();
