@@ -44,7 +44,7 @@ $usuario_db agora contém os dados encontrados que foram pedidos na consulta SQL
                 switch ($usuario_db['usu_tipo_usuario']) { //O switch avalia o valor de usu_tipo_usuario, que indica o tipo de usuário
                     case 0:
                     case 1:
-                        header("Location: liv e res/index.php");            // Se usu_tipo_usuario for 0 ou 1, o usuário é redirecionado para a página
+                        header("Location: liv e res/home.php");            // Se usu_tipo_usuario for 0 ou 1, o usuário é redirecionado para a página
                         break;                                              // O break impede que o código continue avaliando os outros cases
                     case 2:
                         header("Location: administrador/home.php");
