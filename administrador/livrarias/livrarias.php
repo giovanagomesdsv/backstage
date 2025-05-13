@@ -10,6 +10,7 @@ include "../protecao.php";
 <head>
 
     <link rel="stylesheet" href="../geral.css">
+    <link rel="stylesheet" href="livrarias.css">
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,7 +25,7 @@ include "../protecao.php";
     <header>
         Administrador BC
     </header>
- <!--   <nav class="sidebar" id="sidebar"> 
+ <!-   <nav class="sidebar" id="sidebar"> 
         <div class="nome">
 
             <li class="logo_name">
@@ -74,7 +75,7 @@ include "../protecao.php";
                 <a href="../logout.php"><i class='bx bx-log-out'></i></a>
             </li>
         </ul>
-    </nav>-->
+    </nav>->
 
 <!--EXIBE OS CARDS DAS LIVRARIAS-->
 <div class="busca">
@@ -116,7 +117,7 @@ ON
                          echo "
             <div>
                 <a href=\"https://wa.me/{$dados['liv_telefone']}?text=$mensagem\" target=\"_blank\">
-                  <img src=\"../imagens/livrarias/{$dados['liv_foto']}\" alt=\"Logo da livraria\">
+                  <img src=\"../imagens/livrarias/{$dados['liv_foto']}\" alt=\"Logo da livraria\" class="livraria-card">
                    
                 </a>
                 <p>{$dados['liv_nome']}</p>
