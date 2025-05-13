@@ -23,10 +23,18 @@ include "../protecao.php";
     <!--
     <nav class="sidebar" id="sidebar">
         <div class="nome">
-            <div class="logo_name">Bem Vindo, <br> <?php echo $_SESSION['nome']; ?>!</div>
+
+            <li class="logo_name">
+                <a href="perfil/perfil.php">
+                    <span class="link_name"><?php echo $_SESSION['nome']; ?></span>
+                </a>
+            </li>
+
+
             <div class="menu" id="menu">
                 <i class="bx bx-menu"></i>
             </div>
+
         </div>
         <ul class="nav-list">
             <li>
@@ -65,11 +73,8 @@ include "../protecao.php";
         </ul>
     </nav>
 -->
-    <div>
-        <a href="cadastrarresenhista.php">Cadastrar resenhista</a>
-    </div>
-    <div>
-
+   
+ 
 
         <!--EXIBE OS CARDS DAS LIVRARIAS-->
         <div class="busca">
@@ -140,8 +145,8 @@ GROUP BY
 
 
         <?php
-// Consulta de resenhistas com contagem de resenhas
-$consulta = "
+        // Consulta de resenhistas com contagem de resenhas
+        $consulta = "
     SELECT 
         resenhistas.res_nome_fantasia,
         resenhistas.res_telefone,
@@ -162,27 +167,27 @@ $consulta = "
         resenhistas.res_foto
 ";
 
-if ($resp_consulta = mysqli_query($conn, $consulta)) {
-    while ($linha = mysqli_fetch_assoc($resp_consulta)) {
+        if ($resp_consulta = mysqli_query($conn, $consulta)) {
+            while ($linha = mysqli_fetch_assoc($resp_consulta)) {
 
-        // Sanitizar dados de saída
-        $nomeFantasia = htmlspecialchars($linha['res_nome_fantasia']);
-        $telefone = preg_replace('/[^0-9]/', '', $linha['res_telefone']); // só números
-        $titulo = htmlspecialchars($linha['tit_nome']);
-        $foto = htmlspecialchars($linha['res_foto']);
-        $nomeUsuario = htmlspecialchars($linha['usu_nome']);
-        $totalResenhas = (int) $linha['total_resenhas'];
+                // Sanitizar dados de saída
+                $nomeFantasia = htmlspecialchars($linha['res_nome_fantasia']);
+                $telefone = preg_replace('/[^0-9]/', '', $linha['res_telefone']); // só números
+                $titulo = htmlspecialchars($linha['tit_nome']);
+                $foto = htmlspecialchars($linha['res_foto']);
+                $nomeUsuario = htmlspecialchars($linha['usu_nome']);
+                $totalResenhas = (int) $linha['total_resenhas'];
 
-        // Mensagem para o WhatsApp
-        $mensagem = urlencode("Olá, aqui fala a administradora do site Bibliófilos Community!");
+                // Mensagem para o WhatsApp
+                $mensagem = urlencode("Olá, aqui fala a administradora do site Bibliófilos Community!");
 
-        // Verifica se a imagem existe
-        $caminhoImagem = "../imagens/resenhistas/" . $foto;
-        $imgTag = file_exists($caminhoImagem)
-            ? "<img src='$caminhoImagem' alt='Foto do Resenhista' style='width:100px;'>"
-            : "<div style='width:100px; height:100px; background:#ccc;'>Sem imagem</div>";
+                // Verifica se a imagem existe
+                $caminhoImagem = "../imagens/resenhistas/" . $foto;
+                $imgTag = file_exists($caminhoImagem)
+                    ? "<img src='$caminhoImagem' alt='Foto do Resenhista' style='width:100px;'>"
+                    : "<div style='width:100px; height:100px; background:#ccc;'>Sem imagem</div>";
 
-        echo "
+                echo "
         <div class='resenhista-box'>
             <div class='resenhista-info'>
                 <a href='https://wa.me/{$telefone}?text={$mensagem}' target='_blank'>
@@ -197,11 +202,11 @@ if ($resp_consulta = mysqli_query($conn, $consulta)) {
             </div>
         </div>
         ";
-    }
-} else {
-    echo "<p>Erro ao executar a consulta: " . htmlspecialchars(mysqli_error($conn)) . "</p>";
-}
-?>
+            }
+        } else {
+            echo "<p>Erro ao executar a consulta: " . htmlspecialchars(mysqli_error($conn)) . "</p>";
+        }
+        ?>
 
     </div>
     <script src="../script.js"></script>

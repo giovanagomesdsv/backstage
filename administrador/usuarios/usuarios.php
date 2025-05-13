@@ -23,7 +23,14 @@ include "../protecao.php";
     </header>
     <nav class="sidebar" id="sidebar">
         <div class="nome">
-            <div class="logo_name"> <?php echo $_SESSION['nome']; ?></div>
+
+            <li class="logo_name">
+                <a href="perfil/perfil.php">
+                    <span class="link_name"><?php echo $_SESSION['nome']; ?></span>
+                </a>
+            </li>
+
+
             <div class="menu" id="menu">
                 <i class="bx bx-menu"></i>
             </div>
@@ -111,7 +118,7 @@ include "../protecao.php";
                         </div>
                        </div>
                      ";
-                        } else if($dados['usu_tipo_usuario'] == 1) {
+                        } else if ($dados['usu_tipo_usuario'] == 1) {
                             echo "
                         <div class='containerInput'>
                         <text>NOME DE USUARIO</text>
@@ -145,11 +152,11 @@ include "../protecao.php";
         <div>
             <?php
             $consulta = "SELECT usu_nome, usu_id, usu_status, usu_tipo_usuario FROM usuarios order by usu_data_criacao desc";
-            $stmt=$conn->prepare($consulta);
-           
+            $stmt = $conn->prepare($consulta);
 
-            if ( $stmt &&  $stmt->execute()) {
-                $result=$stmt->get_result();
+
+            if ($stmt &&  $stmt->execute()) {
+                $result = $stmt->get_result();
 
                 while ($row = $result->fetch_assoc()) {
 
@@ -168,7 +175,7 @@ include "../protecao.php";
                         </div>
                        </div>
                      ";
-                        } else if($row['usu_tipo_usuario'] == 1) {
+                        } else if ($row['usu_tipo_usuario'] == 1) {
                             echo "
                         <div class='containerInput' style='background-color:rgba(119, 136, 153, .6)'>
                         <text>NOME DE USUARIO</text>
@@ -205,7 +212,7 @@ include "../protecao.php";
                         </div>
                        </div>
                      ";
-                        } else if($row['usu_tipo_usuario'] == 1) {
+                        } else if ($row['usu_tipo_usuario'] == 1) {
                             echo "
                         <div class='containerInput'>
                         <text>NOME DE USUARIO</text>

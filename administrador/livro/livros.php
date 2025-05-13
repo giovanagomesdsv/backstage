@@ -21,11 +21,19 @@ include "../protecao.php";
     </header>
     <!--
     <nav class="sidebar" id="sidebar"> 
-        <div class="nome">
-            <div class="logo_name">Bem Vindo, <br> <?php echo $_SESSION['nome']; ?>!</div>
+       <div class="nome">
+
+            <li class="logo_name">
+                <a href="perfil/perfil.php">
+                    <span class="link_name"><?php echo $_SESSION['nome']; ?></span>
+                </a>
+            </li>
+
+
             <div class="menu" id="menu">
                 <i class="bx bx-menu"></i>
             </div>
+
         </div>
         <ul class="nav-list">
             <li >
