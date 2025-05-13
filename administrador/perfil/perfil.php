@@ -57,7 +57,7 @@ if ($result->num_rows === 1) {
 
         </div>
         <ul class="nav-list">
-            <li class="fix">
+            <li>
                 <a href="../home.php">
                     <i class='bx bx-home-alt-2'></i>
                     <span class="link_name">Home</span>
@@ -101,7 +101,7 @@ if ($result->num_rows === 1) {
         <p><strong>Senha:</strong> <?= str_repeat('*', strlen($usuario['usu_senha'])) ?></p>
         <p><strong>Data de Criação:</strong> <?= date("d/m/Y H:i", strtotime($usuario['usu_data_criacao'])) ?></p>
         <p><strong>Status:</strong> <span class="status"><?= $usuario['usu_status'] ? "Ativo" : "Inativo" ?></span></p>
-        <a href="editar-perfil.php" style="display: inline-block; margin-top: 20px; background-color: #333; color: #fff; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Editar perfil</a>
+        <a href="editar-perfil.php">Editar perfil</a>
     </div>
 
     <script src="../script.js"></script>

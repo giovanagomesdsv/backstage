@@ -70,27 +70,88 @@ $stmt->close();
 <head>
     <meta charset="UTF-8">
     <title>Editar Perfil</title>
+
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- Caminhos corrigidos dos CSS -->
+    <link rel="stylesheet" href="editar-perfil.css">
+    <link rel="stylesheet" href="../geral.css">
 </head>
 <body>
+
+    <header>
+        Administrador BC
+    </header>
+    <nav class="sidebar" id="sidebar">
+        <div class="nome">
+            <div class="logo_name"> <?php echo $_SESSION['nome']; ?></div>
+            <div class="menu" id="menu">
+                <i class="bx bx-menu"></i>
+            </div>
+
+        </div>
+        <ul class="nav-list">
+            <li>
+                <a href="../home.php">
+                    <i class='bx bx-home-alt-2'></i>
+                    <span class="link_name">Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="../livrarias/livrarias.php">
+                    <i class='bx bx-user'></i>
+                    <span class="link_name">Livrarias</span>
+                </a>
+            </li>
+            <li>
+                <a href="../resenhistas/resenhistas.php">
+                    <i class='bx bx-user-pin'></i>
+                    <span class="link_name">Resenhistas</span>
+                </a>
+            </li>
+            <li>
+                <a href="../livro/livros.php">
+                    <i class='bx bx-book-bookmark'></i>
+                    <span class="link_name">Livros</span>
+                </a>
+            </li>
+            <li>
+                <a href="../usuarios/usuarios.php">
+                    <i class='bx bx-book-content'></i>
+                    <span class="link_name">Usuarios</span>
+                </a>
+            </li>
+            <li class="../sair">
+                <a href="logout.php"><i class='bx bx-log-out'></i></a>
+            </li>
+        </ul>
+    </nav>
+
+
+
     <!-- Exibe mensagens de erro -->
     <?php if (!empty($mensagem)): ?>
         <script>alert("<?= htmlspecialchars($mensagem) ?>");</script>
     <?php endif; ?>
-
+    <div class="editar-perfil-container">
     <h1>Editar Perfil</h1>
     <form method="POST">
+        <div class="form-group">
         <label>Nome:</label><br>
         <input type="text" name="nome" value="<?= htmlspecialchars($usuario['usu_nome']) ?>" required><br><br>
-
+    </div>
+    <div class="form-group">
         <label>Email:</label><br>
         <input type="email" name="email" value="<?= htmlspecialchars($usuario['usu_email']) ?>" required><br><br>
-
+    </div>
+    <div class="form-group">
         <label>Nova senha:</label><br>
         <input type="password" name="senha" placeholder="Deixe em branco para manter"><br><br>
-
+    </div>
         <button type="submit">Salvar Alterações</button>
     </form>
     <br>
     <a href="perfil.php">Voltar ao perfil</a>
+    </div>
+    <script src="../script.js"></script>
 </body>
 </html>
