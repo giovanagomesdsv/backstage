@@ -1,4 +1,4 @@
-<?php
+<!--<?php
 session_start();
 include "../conexao-banco/conexao.php";
 
@@ -63,6 +63,7 @@ $result = $stmt->get_result();
 $usuario = $result->fetch_assoc();
 $stmt->close();
 ?>
+-->
 
 <!DOCTYPE html>
 <html lang="pt-BR">
