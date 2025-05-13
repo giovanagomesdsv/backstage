@@ -30,6 +30,7 @@ if ($result->num_rows === 1) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil do Usuário</title>
 
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <!-- Caminhos corrigidos dos CSS -->
     <link rel="stylesheet" href="perfil.css">
     <link rel="stylesheet" href="../geral.css">
@@ -57,36 +58,36 @@ if ($result->num_rows === 1) {
         </div>
         <ul class="nav-list">
             <li class="fix">
-                <a href="home.php">
+                <a href="../home.php">
                     <i class='bx bx-home-alt-2'></i>
                     <span class="link_name">Home</span>
                 </a>
             </li>
             <li>
-                <a href="livrarias/livrarias.php">
+                <a href="../livrarias/livrarias.php">
                     <i class='bx bx-user'></i>
                     <span class="link_name">Livrarias</span>
                 </a>
             </li>
             <li>
-                <a href="resenhistas/resenhistas.php">
+                <a href="../resenhistas/resenhistas.php">
                     <i class='bx bx-user-pin'></i>
                     <span class="link_name">Resenhistas</span>
                 </a>
             </li>
             <li>
-                <a href="livro/livros.php">
+                <a href="../livro/livros.php">
                     <i class='bx bx-book-bookmark'></i>
                     <span class="link_name">Livros</span>
                 </a>
             </li>
             <li>
-                <a href="usuarios/usuarios.php">
+                <a href="../usuarios/usuarios.php">
                     <i class='bx bx-book-content'></i>
                     <span class="link_name">Usuarios</span>
                 </a>
             </li>
-            <li class="sair">
+            <li class="../sair">
                 <a href="logout.php"><i class='bx bx-log-out'></i></a>
             </li>
         </ul>
@@ -103,5 +104,6 @@ if ($result->num_rows === 1) {
         <a href="editar-perfil.php" style="display: inline-block; margin-top: 20px; background-color: #333; color: #fff; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Editar perfil</a>
     </div>
 
+    <script src="../script.js"></script>
 </body>
 </html>
