@@ -8,9 +8,8 @@ include "../protecao.php";
 <html lang="en">
 
 <head>
-
-    <link rel="stylesheet" href="../geral.css">
-    <link rel="stylesheet" href="livrarias.css">
+<link rel="stylesheet" href="../geral.css">
+<link rel="stylesheet" href="livrarias.css">
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,7 +24,7 @@ include "../protecao.php";
     <header>
         Administrador BC
     </header>
- <!-   <nav class="sidebar" id="sidebar"> 
+    <nav class="sidebar" id="sidebar"> 
         <div class="nome">
 
             <li class="logo_name">
@@ -75,7 +74,7 @@ include "../protecao.php";
                 <a href="../logout.php"><i class='bx bx-log-out'></i></a>
             </li>
         </ul>
-    </nav>->
+    </nav>
 
 <!--EXIBE OS CARDS DAS LIVRARIAS-->
 <div class="busca">
@@ -134,7 +133,7 @@ ON
         </div>
 
     <div>
-    <?php
+   <!-- <?php
 // Consulta SQL preparada
 $consulta = "
     SELECT 
@@ -186,7 +185,7 @@ if ($stmt = $conn->prepare($consulta)) {
 } else {
     echo "<p>Erro ao consultar as livrarias. Tente novamente mais tarde.</p>";
 }
-?>
+?>-->
 
       
     </div>

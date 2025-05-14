@@ -11,7 +11,7 @@
 body {
     margin: 0;
     font-family: 'Verdana', sans-serif;
-    background-color: #e6e6e6;
+    background-color: var(--bg);
 }
 
 /* Campo de busca */
@@ -58,14 +58,16 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
-    padding: 30px 40px;
+    padding: 30px 20px;
+    max-width: 1200px; /* ou qualquer valor adequado */
+    margin: 0 auto;
 }
 
 .livraria-card {
     background-color: #396185;
     color: white;
     border-radius: 5px;
-    width: 150px;
+    width: 140px;
     text-align: center;
     padding: 15px 10px;
 }
