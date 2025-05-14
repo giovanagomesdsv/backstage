@@ -114,7 +114,6 @@ header {
 .sidebar ul li a:hover {
     width: 100%;
     color:var(--text);
-   
     border-bottom: 1px solid var(--text); 
 
 }
