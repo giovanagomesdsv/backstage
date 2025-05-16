@@ -14,12 +14,16 @@ include "../protecao.php";
 
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>ADM BC - Resenhistas</title>
+
+    <link rel="stylesheet" href="resenhistas.css">
+    <link rel="stylesheet" href="geral.css">
 </head>
 
 <body>
     <header>
         Administrador BC
     </header>
+
     <!--
     <nav class="sidebar" id="sidebar">
         <div class="nome">
@@ -77,10 +81,10 @@ include "../protecao.php";
  
 
         <!--EXIBE OS CARDS DAS LIVRARIAS-->
-        <div class="busca">
-            <form action="" method="GET">
-                <input type="text" name="busca" placeholder="Busque os resenhistas...">
-                <button type="submit">Pesquisar</button>
+        <div class="busca-container">
+            <form action="" method="GET" class="busca-form">
+                <input type="text" name="busca" placeholder="nome do resenhista">
+                <button type="submit"><i class='bx bx-search'></i></button>
             </form>
         </div>
 
@@ -187,21 +191,23 @@ GROUP BY
                     ? "<img src='$caminhoImagem' alt='Foto do Resenhista' style='width:100px;'>"
                     : "<div style='width:100px; height:100px; background:#ccc;'>Sem imagem</div>";
 
-                echo "
-        <div class='resenhista-box'>
-            <div class='resenhista-info'>
-                <a href='https://wa.me/{$telefone}?text={$mensagem}' target='_blank'>
-                    $imgTag
-                </a>
-                <h3>$nomeUsuario</h3>
-                <p><strong>Pseudônimo:</strong> $nomeFantasia</p>
-                <p><strong>Título:</strong> $titulo</p>
-            </div>
-            <div class='resenha-contador'>
-                <p><strong>Total de Resenhas:</strong> $totalResenhas</p>
-            </div>
-        </div>
-        ";
+                    echo "
+                    <div class='resenhista-box'>
+                        <div class='resenhista-info'>
+                            <a href='https://wa.me/{$telefone}?text={$mensagem}' target='_blank'>
+                                $imgTag
+                            </a>
+                            <div>
+                                <h3>$nomeUsuario</h3>
+                                <p><strong>Pseudônimo:</strong> $nomeFantasia</p>
+                                <p><strong>Título:</strong> $titulo</p>
+                            </div>
+                        </div>
+                        <div class='resenha-contador'>
+                            $totalResenhas
+                        </div>
+                    </div>
+                ";
             }
         } else {
             echo "<p>Erro ao executar a consulta: " . htmlspecialchars(mysqli_error($conn)) . "</p>";
