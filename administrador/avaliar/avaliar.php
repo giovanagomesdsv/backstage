@@ -1,4 +1,4 @@
-<?php
+<!--<?php
 include "../conexao-banco/conexao.php";
 
 // Verifica se o ID foi passado via GET
@@ -58,6 +58,7 @@ if ($result->num_rows > 0) {
     $autor = htmlspecialchars($row['res_nome_fantasia']); // Previne XSS
 
     echo "
+-->
     <!DOCTYPE html>
     <html lang='pt-br'>
     <head>
@@ -65,7 +66,7 @@ if ($result->num_rows > 0) {
         <meta name='viewport' content='width=device-width, initial-scale=1.0'>
         <title>Avaliar Resenha</title>
    <link rel='stylesheet' href='avaliar.css'>
-    <link rel='stylesheet' href='geral.css'>
+  <link rel='stylesheet' href='../geral.css'>
        
     </head>
     <body>
