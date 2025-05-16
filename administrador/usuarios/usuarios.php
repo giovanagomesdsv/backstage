@@ -167,10 +167,10 @@ include "../protecao.php";
                 ];
 
 
-                while ($row = $result->fetch_assoc()) {
+                while ($row = $result->fetch_assoc()) { // percorre cada linha de resultado retornada pela consulta SQL
                     $tipo = $row['usu_tipo_usuario'];
                     $quantidade = $row['quantidade'];
-            
+
                     // Cria um card para cada tipo encontrado no banco
                     echo "
                         <div>
@@ -180,6 +180,7 @@ include "../protecao.php";
                     ";
                 }
             }
+            $stmt->close();
             ?>
         </div>
         <div>
