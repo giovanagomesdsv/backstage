@@ -153,33 +153,32 @@ include "../protecao.php";
 
             $sql = "SELECT usu_tipo_usuario, COUNT(*) AS quantidade
             FROM usuarios
-            WHERE usu_tipo_usuario IN (0, 1, 2)
             GROUP BY usu_tipo_usuario";
-            $result = $conn->query($sql);
+            $stmt = $conn->prepare($sql);
 
-            // Array para armazenar os resultados com nomes amigáveis
-            $tipos = [
-                0 => "Resenhista",
-                 1 => "Livrarias",
-                2 => "Administrador "
-            ];
+            if ($stmt && $stmt->execute()) {
+                $result = $stmt->get_result();
 
-            // Inicializa os contadores em 0 (caso algum tipo não esteja presente no banco)
-            $quantidades = [
-                0 => 0,
-                1 => 0,
-                2 => 0
-            ];
+                // Array para mapear tipo para nome
+                $tipos = [
+                    0 => "Resenhistas",
+                    1 => "Livrarias",
+                    2 => "Administradores"
+                ];
 
-            // Preenche os dados retornados do banco
-            while ($row = $result->fetch_assoc()) {
-                $tipo = $row['tipo'];
-                $quantidades[$tipo] = $row['quantidade'];
-            }
 
-            // Exibe os resultados
-            foreach ($quantidades as $tipo => $qtd) {
-                echo "{$tipos[$tipo]}: $qtd<br>";
+                while ($row = $result->fetch_assoc()) {
+                    $tipo = $row['usu_tipo_usuario'];
+                    $quantidade = $row['quantidade'];
+            
+                    // Cria um card para cada tipo encontrado no banco
+                    echo "
+                        <div>
+                            <h3>{$tipos[$tipo]}</h3>
+                            <p>$quantidade</p>
+                        </div>
+                    ";
+                }
             }
             ?>
         </div>
