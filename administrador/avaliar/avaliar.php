@@ -65,32 +65,34 @@ if ($result->num_rows > 0) {
         <meta charset='UTF-8'>
         <meta name='viewport' content='width=device-width, initial-scale=1.0'>
         <title>Avaliar Resenha</title>
-   <link rel='stylesheet' href='avaliar.css'>
-  <link rel='stylesheet' href='../geral.css'>
+        <link rel="stylesheet" href="../avaliar.css">
+        <link rel='stylesheet' href='../geral.css'>
        
     </head>
     <body>
 
-        <p class='avaliaresenha'>ㅤㅤㅤㅤㅤAVALIAR RESENHAㅤㅤㅤㅤㅤ</p>
+        <header>
+            Administrador BC
+        </header>
+        <p class='avaliar'>AVALIAR RESENHA</p>
+    </div>
 
-        <div class='cardazul'>
-            <div class='imgtitulo'>
+    <div class="card">
+        <div class="cardimgsinopse">
                 <img src='imagens/livros/{$foto}' alt=''>
-            </div>
-
-            <div class='cardbranco1'>
+                <div class="sinopse">
                 <p>{$sinopse}</p>
+                <p>{$titulo}</p>
             </div>
+        </div>  
 
-            <p>{$titulo}</p>
-        </div>
-
-        <p>RESENHA</p>
-        <div class='cardbranco2'>
-            <p>{$texto}</p>
-        </div>
-
-        <p>{$autor}</p>
+        <div class="cardresenha">
+            <div class="resenha">
+                <p>RESENHA</p>
+                <p>{$texto}</p>
+                <p>{$autor}</p>
+            </div>
+        </div>  
 
         <form action='?id={$dado}' method='post' class='cardforms'>
             <select name='avaliar' required>
@@ -101,7 +103,7 @@ if ($result->num_rows > 0) {
             </select>
             <input type='submit' value='Enviar'>
         </form>
-
+    </div>
     </body>
     </html>
     ";

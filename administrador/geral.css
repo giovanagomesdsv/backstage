@@ -45,6 +45,7 @@ header {
     height: 1.5rem;
     background-color: var(--terciaria);
     padding-left: 20rem;
+    border:solid 1px red
 }
 .sidebar {
     height: 100vh;
