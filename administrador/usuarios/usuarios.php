@@ -148,7 +148,41 @@ include "../protecao.php";
             }
             ?>
         </div>
+        <div>
+            <?php
 
+            $sql = "SELECT usu_tipo_usuario, COUNT(*) AS quantidade
+            FROM usuarios
+            WHERE usu_tipo_usuario IN (0, 1, 2)
+            GROUP BY usu_tipo_usuario";
+            $result = $conn->query($sql);
+
+            // Array para armazenar os resultados com nomes amigáveis
+            $tipos = [
+                0 => "Resenhista",
+                 1 => "Livrarias",
+                2 => "Administrador "
+            ];
+
+            // Inicializa os contadores em 0 (caso algum tipo não esteja presente no banco)
+            $quantidades = [
+                0 => 0,
+                1 => 0,
+                2 => 0
+            ];
+
+            // Preenche os dados retornados do banco
+            while ($row = $result->fetch_assoc()) {
+                $tipo = $row['tipo'];
+                $quantidades[$tipo] = $row['quantidade'];
+            }
+
+            // Exibe os resultados
+            foreach ($quantidades as $tipo => $qtd) {
+                echo "{$tipos[$tipo]}: $qtd<br>";
+            }
+            ?>
+        </div>
         <div>
             <?php
             $consulta = "SELECT usu_nome, usu_id, usu_status, usu_tipo_usuario FROM usuarios order by usu_data_criacao desc";
