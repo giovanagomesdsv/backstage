@@ -9,7 +9,7 @@
 /*CSS DA SEARCH-BAR*/
 
 body {
-    margin: 0px;
+    margin: 0;
     font-family: 'Verdana', sans-serif;
     background-color: var(--bg);
 }
@@ -52,57 +52,62 @@ body {
     font-weight: normal;
 }
 
-/* Grid de cards */
-.livrarias-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    padding: 30px 20px;
-    max-width: 1200px; /* ou qualquer valor adequado */
-    margin: 0 auto;
-}
-
-.livraria-card {
-    margin-left:200px;
-    background-color: #396185;
-    color: white;
-    border-radius: 5px;
-    width: 1402px;
+/*CARDS DE INFORMAÇÃO DAS LIVRARIAS*/
+.card {
+    width: 100%;
+    max-width: 300px;
+    height: 450px;
+    background-color: var(--secundaria);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    padding: 16px;
+    box-sizing: border-box;
     text-align: center;
-    padding: 15px 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin: 10px;
+    font-family: 'Arial', sans-serif;
 }
 
-.livraria-card img {
-    width: 50px;
-    height: 50px;
+.card:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card img {
+    background-color:#fff;
     object-fit: contain;
-    margin-bottom: 10px;
-    border-radius:50%;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 16px;
+    border-radius: 50%;
 }
 
-.livraria-card p {
-    margin: 3px 0;
-    font-size: 12px;
-}
-
-.livraria-card .email {
-    color: #e0f0ff;
-    font-size: 11px;
-}
-
-.livraria-card .total {
-    margin-top: 8px;
-    font-size: 11px;
-    font-weight: bold;
-    color: #d6d6d6;
-}
-
-.livraria-card .numero {
-    background-color: #d9d9d9;
+.card p {
+    margin-bottom: 50px; /* Espaçamento entre parágrafos */
+    font-size: 14px;
+    border-radius: 20px;
+    padding: 4px 10px;
     color: #333;
-    margin-top: 5px;
+}
+
+.card div {
+    margin-top: 10px; /* Espaçamento acima do "Total de Livros" */
     font-weight: bold;
-    padding: 4px 0;
-    border-radius: 2px;
+    color: #2c3e50;
+    font-size: 15px;
+}
+/*H2 DO TODAS AS LIVRARIAS*/
+h2{
+    font-size:25px;
+    color:var(--terciaria);
+}
+/*CSS PARA A DIV DO TOTAL LIVROS*/
+.total_livros{
+    background-color:#fff;
+}
+/*LINHA HORIZONTAL ABAIXO DO H2 (TODAS AS LIVRARIAS)*/
+.linha-horizontal {
+    width:70%;
+    height: 2px;
+    background-color:var(--terciaria); /* cor da linha */
+    margin: 0 auto 20px auto; /* margem abaixo da linha */
 }

@@ -85,7 +85,7 @@ include "../protecao.php";
         </div>
 
        
-        <div class="pesquisa">
+        <!-- <div class="pesquisa">
             <?php
             if (!isset($_GET['busca']) || empty($_GET['busca'])) {
                 echo "<div class='resultados'></div>";
@@ -132,8 +132,14 @@ ON
             ?>
         </div>
 
-    <div>
-   <!-- <?php
+    <div> -->
+<main>
+
+<!--TODAS AS LIVRARIAS <H2>-->
+    <h2>TODAS LIVRARIAS</h2>
+    <div class='linha-horizontal'></div>
+
+    <?php
 // Consulta SQL preparada
 $consulta = "
     SELECT 
@@ -168,28 +174,30 @@ if ($stmt = $conn->prepare($consulta)) {
 
         // Exibindo os dados das livrarias de maneira segura
         echo "
-        <div>
+        <div class='card'>
             <a href=\"https://wa.me/{$liv_telefone}?text=$mensagem\" target=\"_blank\">
-                <img src=\"../imagens/livrarias/{$liv_foto}\" alt=\"Logo da livraria\">
+                <img src=\"../imagens/livrarias/{$liv_foto}\" alt=''>
             </a>
             <p>" . htmlspecialchars($liv_nome, ENT_QUOTES, 'UTF-8') . "</p>
             <p>" . htmlspecialchars($liv_email, ENT_QUOTES, 'UTF-8') . "</p>
             <p>" . htmlspecialchars($liv_cidade, ENT_QUOTES, 'UTF-8') . " ({$liv_estado})</p>
-            <div>Total de Livros: {$total_livros}</div>
+            <div class='total_livros'>Total de Livros: {$total_livros}</div>
         </div>
         ";
     }
+
+    
 
     // Fecha o statement
     $stmt->close();
 } else {
     echo "<p>Erro ao consultar as livrarias. Tente novamente mais tarde.</p>";
 }
-?>-->
+?
 
       
     </div>
-
+</main>
     <script src="../script.js"></script>
 </body>
 
