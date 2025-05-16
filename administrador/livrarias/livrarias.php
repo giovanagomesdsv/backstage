@@ -114,9 +114,9 @@ ON
 
                     while ($dados = $sql_query->fetch_assoc()) {
                          echo "
-            <div class="livraria-card">
+            <div class='livraria-card'>
                 <a href=\"https://wa.me/{$dados['liv_telefone']}?text=$mensagem\" target=\"_blank\">
-                  <img src=\"../imagens/livrarias/{$dados['liv_foto']}\" alt=\"Logo da livraria\" class="livraria-card">
+                  <img src=\"../imagens/livrarias/{$dados['liv_foto']}\" alt=\"Logo da livraria\" class='livraria-card'>
                    
                 </a>
                 <p>{$dados['liv_nome']}</p>
