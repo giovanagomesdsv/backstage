@@ -33,6 +33,7 @@ body {
     width: 100%;
     text-align: center;
     display: none;
+    border-bottom: 2px solid var(--text);
 }
 
 .perfil-container {

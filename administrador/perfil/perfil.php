@@ -39,7 +39,7 @@ if ($result->num_rows === 1) {
     <style>
         .status {
             font-weight: bold;
-            color: <?= $usuario['usu_status'] ? "green" : "red" ?>;
+            color: <?= $usuario['usu_status'] ? "#f5f5f5" : "#f5f5f5" ?>;
         }
     </style>
 </head>

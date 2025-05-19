@@ -1,11 +1,10 @@
 .busca-container {
     display: flex;
     justify-content: flex-end;
-    background-color: #f5f5f5;
+    
     padding: 1rem;
-
+border: solid 1px red
 }
-
 .busca-form {
     display: flex;
     align-items: center;
@@ -14,6 +13,7 @@
     overflow: hidden;
     width: 350px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    
 }
 
 .busca-form input[type="text"] {

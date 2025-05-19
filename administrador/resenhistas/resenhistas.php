@@ -24,7 +24,7 @@ include "../protecao.php";
         Administrador BC
     </header>
 
-    <!--
+   
     <nav class="sidebar" id="sidebar">
         <div class="nome">
 
@@ -76,7 +76,6 @@ include "../protecao.php";
             </li>
         </ul>
     </nav>
--->
    
  
 

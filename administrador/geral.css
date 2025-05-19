@@ -45,7 +45,6 @@ header {
     height: 1.5rem;
     background-color: var(--terciaria);
     padding-left: 20rem;
-    border:solid 1px red
 }
 .sidebar {
     height: 100vh;
@@ -54,11 +53,14 @@ header {
     top: 0;
     position: fixed;
     z-index: 1000;
+
 }
 .nome {
     display: flex;
     flex-direction: column;
     align-items: center;
+
+
 } 
 .menu{
     margin-top: 1rem;
@@ -66,6 +68,7 @@ header {
     cursor: pointer;
     display: flex;
     align-items: center;
+    
 } 
 .menu:hover{
     border: 1px solid;
@@ -83,12 +86,30 @@ header {
     width: 100%;         /* <- isso é importante */
   
 }
+
+
+
 .logo_name {
+    background-color: var(--principal);
+    color: var(--text);
+    padding: 1rem;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
     width: 100%;
-    display: none;
     text-align: center;
+    display: none;
+text-decoration: underline;
+text-decoration-color: var(--text);
     justify-content: center;
     margin-top: 1rem;
+
+}
+.logo_name:hover {
+    width: 100%;
+    color:var(--text);
+    border-bottom: 1px solid var(--text); 
+   
+
 }
 .sidebar ul{
     height: 100%;
@@ -96,7 +117,7 @@ header {
     margin-top: 1rem;
     padding-left: 2rem;
    
-    
+
 }
 
 
@@ -104,7 +125,7 @@ header {
     margin-bottom: 5rem;
     width: 100%;
    
-  
+
 }
 .sidebar ul li a .link_name{
     margin-left: 1.4rem;
@@ -116,6 +137,7 @@ header {
     width: 100%;
     color:var(--text);
     border-bottom: 1px solid var(--text); 
+   
 
 }
 .sidebar ul .fix {
@@ -123,6 +145,7 @@ header {
     padding:0.1rem 0.5rem;
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
+    
 }
 
 
@@ -133,6 +156,7 @@ header {
 
 .sidebar.abrir .logo_name{
     display: flex;
+
 }
 .sidebar.abrir .link_name{
     display: block;
