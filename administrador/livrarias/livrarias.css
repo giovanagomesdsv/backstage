@@ -111,3 +111,15 @@ h2{
     background-color:var(--terciaria); /* cor da linha */
     margin: 0 auto 20px auto; /* margem abaixo da linha */
 }
+
+.container-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* centraliza os cards */
+    gap: 20px; /* espaço entre os cards */
+    padding: 20px 40px;
+}
+
+.card {
+    flex: 1 1 calc(25% - 40px); /* 4 por linha com espaçamento */
+}
