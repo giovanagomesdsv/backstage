@@ -193,7 +193,7 @@ if ($stmt = $conn->prepare($consulta)) {
 } else {
     echo "<p>Erro ao consultar as livrarias. Tente novamente mais tarde.</p>";
 }
-?
+?>
 
       
     </div>
