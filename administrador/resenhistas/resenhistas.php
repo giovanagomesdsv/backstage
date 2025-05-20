@@ -136,7 +136,7 @@ GROUP BY
                             <div class='resenhista-info'>
                                   <a href=\"https://wa.me/{$dados['res_telefone']}?text=$mensagem\" target=\"_blank\"><img src='../imagens/resenhistas/{$dados['res_foto']}' alt='Foto do Resenhista'></a>
                                 </div>
-                                  <div class="cardtext">
+                                  <div class='cardtext'>
                                  <h3>{$dados['usu_nome']}</h3>
                                  <p><strong>Pseudônimo:</strong> {$dados['res_nome_fantasia']}</p>
                                  <p><strong>Titulo:</strong> {$dados['tit_nome']}</p>
@@ -205,7 +205,7 @@ GROUP BY
                                 $imgTag
                             </a>
                         </div>
-                            <div class="cardtext">
+                            <div class='cardtext'>
                                 <h3>$nomeUsuario</h3>
                                 <p><strong>Pseudônimo:</strong> $nomeFantasia</p>
                                 <p><strong>Título:</strong> $titulo</p>
