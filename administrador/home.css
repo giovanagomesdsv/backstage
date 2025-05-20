@@ -49,18 +49,18 @@
 }
 
 /* Blocos internos */
-.card .imagem {
+.card1 .imagem {
     width: 20%;
     max-width: 120px;
 }
 
-.card .info {
+.card1 .info {
     flex: 1;
     text-align: left;
     color: var(--text);
 }
 
-.card .acao {
+.card1 .acao {
     width: 20%;
     max-width: 150px;
     display: flex;
