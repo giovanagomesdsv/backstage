@@ -5,7 +5,7 @@ include "../conexao-banco/conexao.php";
 include "../protecao.php";
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
 <link rel="stylesheet" href="../geral.css">
