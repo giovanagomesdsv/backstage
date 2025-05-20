@@ -24,18 +24,6 @@ body {
     
 }
 
-.logo_name {
-    background-color: var(--principal);
-    color: var(--text);
-    padding: 1rem;
-    border-top-left-radius: 15px;
-    border-bottom-left-radius: 15px;
-    width: 100%;
-    text-align: center;
-    display: none;
-    border-bottom: 2px solid var(--text);
-}
-
 .perfil-container {
     background-color: var(--principal);
   width: 50%;
@@ -43,8 +31,6 @@ body {
     padding: 3rem;
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    
-
 }
 
 .perfil-container h1 {
