@@ -93,7 +93,7 @@ if ($result->num_rows === 1) {
         </ul>
     </nav>
 
-
+<main>
     <div class="perfil-container">
         <h1>Perfil do Usuário</h1>
         <p><strong>Nome:</strong> <?= htmlspecialchars($usuario['usu_nome']) ?></p>
@@ -103,7 +103,7 @@ if ($result->num_rows === 1) {
         <p><strong>Status:</strong> <span class="status"><?= $usuario['usu_status'] ? "Ativo" : "Inativo" ?></span></p>
         <a href="editar-perfil.php">Editar perfil</a>
     </div>
-
+    </main>
     <script src="../script.js"></script>
 </body>
 </html>

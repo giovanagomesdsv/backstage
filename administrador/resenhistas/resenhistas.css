@@ -1,42 +1,36 @@
-.busca-container {
-    display: flex;
-    justify-content: flex-end;
-    
-    padding: 1rem;
-border: solid 1px red
-}
+
 .busca-form {
     display: flex;
     align-items: center;
-    background-color: #e6e6e6;
     border-radius: 0.5rem;
-    overflow: hidden;
-    width: 350px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    
+    justify-content: flex-end;
+    background-color: var(--pesquisa);
+    margin-bottom: 2rem;
+    gap: 1rem;
 }
 
 .busca-form input[type="text"] {
-    flex: 1;
-    border: none;
+    border: none; /* remove a borda preta */
+    outline: none; /* remove o contorno ao focar */
     padding: 0.8rem 1rem;
     font-size: 1rem;
-    background-color: transparent;
-    outline: none;
-    color: #333;
+    background-color: var(--pesquisa);
+    border-radius: 0.5rem 0 0 0.5rem; /* arredonda o lado esquerdo */
 }
+
 
 .busca-form button {
     background: none;
     border: none;
+    cursor: pointer;
+}
+.busca-form button i {
     padding: 0 1rem;
     font-size: 1.4rem;
     cursor: pointer;
     color: #000000;
-    transition: color 0.3s ease;
 }
 
-.busca-form button:hover {
-    color: var(--terciaria);
+.resenhista-box{
+    border: solid 1px red;
 }
-

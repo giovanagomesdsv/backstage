@@ -10,6 +10,7 @@
  transition: .2s;
  color: var(--text);
  scroll-behavior: smooth;
+ 
 }
 
 :root {
@@ -18,12 +19,14 @@
     --principal: #406E96;
     --secundaria: #2A4A64;
     --terciaria: #1F3A50;
+    --pesquisa:#C6C8CB
 }
 
 
 ::-webkit-scrollbar {
     height: 0;
     width: 0.5rem;
+    
 }
 
 ::-webkit-scrollbar-track{
@@ -81,10 +84,10 @@ header {
     gap: 1rem;
     margin-top: 1rem;
     margin-bottom: 1rem;
-
     text-align: center;
-    width: 100%;         /* <- isso é importante */
-  
+    width: 100%; 
+            /* <- isso é importante */
+
 }
 
 
@@ -107,8 +110,8 @@ text-decoration-color: var(--text);
 .logo_name:hover {
     width: 100%;
     color:var(--text);
-    border-bottom: 1px solid var(--text); 
-   
+text-decoration: underline;
+text-decoration-color: var(--text);
 
 }
 .sidebar ul{
@@ -152,6 +155,7 @@ text-decoration-color: var(--text);
 
 .sidebar.abrir {
     width: 15rem;
+    
 }
 
 .sidebar.abrir .logo_name{
@@ -187,7 +191,7 @@ text-decoration-color: var(--text);
 main {
     height: 100vh;
     width: 80%;
-   
+    border: solid 1px red;
     margin: 0 10%;
     display: flex;
     align-items: center;
@@ -195,6 +199,14 @@ main {
     position: absolute;
 }
 
+/* padrao de pesquisa */
+.busca-container {
+    display: flex;
+    justify-content: flex-end;
+    float: right;
+    padding-top: 1rem;
+width:100% 
+}
 .botao{
     background-color:#2A4A64;
     color:#f5f5f5;

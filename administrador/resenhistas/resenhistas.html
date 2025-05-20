@@ -24,13 +24,15 @@ include "../protecao.php";
         Administrador BC
     </header>
 
-   
+
     <nav class="sidebar" id="sidebar">
         <div class="nome">
 
             <li class="logo_name">
                 <a href="perfil/perfil.php">
-                    <span class="link_name"><?php echo $_SESSION['nome']; ?></span>
+                    <span class="link_name">
+                        <?php echo $_SESSION['nome']; ?>
+                    </span>
                 </a>
             </li>
 
@@ -76,10 +78,11 @@ include "../protecao.php";
             </li>
         </ul>
     </nav>
-   
- 
 
-        <!--EXIBE OS CARDS DAS LIVRARIAS-->
+
+
+    <!--EXIBE OS CARDS DAS LIVRARIAS-->
+    <main>
         <div class="busca-container">
             <form action="" method="GET" class="busca-form">
                 <input type="text" name="busca" placeholder="nome do resenhista">
@@ -213,7 +216,8 @@ GROUP BY
         }
         ?>
 
-    </div>
+        </div>
+    </main>
     <script src="../script.js"></script>
 </body>
 

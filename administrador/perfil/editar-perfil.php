@@ -127,7 +127,7 @@ $stmt->close();
     </nav>
 
 
-
+<main>
     <!-- Exibe mensagens de erro -->
     <?php if (!empty($mensagem)): ?>
         <script>alert("<?= htmlspecialchars($mensagem) ?>");</script>
@@ -152,6 +152,7 @@ $stmt->close();
     <br>
     <a href="perfil.php">Voltar ao perfil</a>
     </div>
+</main>
     <script src="../script.js"></script>
 </body>
 </html>
