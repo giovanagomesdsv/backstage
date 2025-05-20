@@ -113,7 +113,7 @@ include "conexao-banco/conexao.php";
                     $foto = htmlspecialchars($res['livro_foto']);
 
                     echo "
-        <div class='card'>
+        <div class='card1'>
             <div class='imagem'>
                 <img class='imglivro' src='../administrador/imagens/livros/{$foto}' alt=''>
             </div>

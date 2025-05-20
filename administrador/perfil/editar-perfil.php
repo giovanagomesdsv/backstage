@@ -70,14 +70,11 @@ $stmt->close();
 <head>
     <meta charset="UTF-8">
     <title>Editar Perfil</title>
-
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <!-- Caminhos corrigidos dos CSS -->
-    <link rel="stylesheet" href="editar-perfil.css">
+    <link rel="stylesheet" href="perfil.css">
     <link rel="stylesheet" href="../geral.css">
 </head>
 <body>
-
     <header>
         Administrador BC
     </header>
@@ -87,7 +84,6 @@ $stmt->close();
             <div class="menu" id="menu">
                 <i class="bx bx-menu"></i>
             </div>
-
         </div>
         <ul class="nav-list">
             <li>
@@ -125,8 +121,6 @@ $stmt->close();
             </li>
         </ul>
     </nav>
-
-
 <main>
     <!-- Exibe mensagens de erro -->
     <?php if (!empty($mensagem)): ?>

@@ -131,17 +131,22 @@ GROUP BY
 
                     while ($dados = $sql_query->fetch_assoc()) {
                         echo "
-            <div>
-                <div>
-                    <a href=\"https://wa.me/{$dados['res_telefone']}?text=$mensagem\" target=\"_blank\"><img src='../imagens/resenhistas/{$dados['res_foto']}' alt='Foto do Resenhista'></a>
-                    <h3>{$dados['usu_nome']}</h3>
-                    <p><strong>Pseudônimo:</strong> {$dados['res_nome_fantasia']}</p>
-                    <p><strong>Titulo:</strong> {$dados['tit_nome']}</p>
-                </div>
-                <div>
-                    <p><strong>Total de Resenhas:</strong> {$dados['total_resenhas']}</p>
-                </div>
-            </div>
+
+                        <div class='resenhista-box'>
+                            <div class='resenhista-info'>
+                                  <a href=\"https://wa.me/{$dados['res_telefone']}?text=$mensagem\" target=\"_blank\"><img src='../imagens/resenhistas/{$dados['res_foto']}' alt='Foto do Resenhista'></a>
+                                </div>
+                                  <div class="cardtext">
+                                 <h3>{$dados['usu_nome']}</h3>
+                                 <p><strong>Pseudônimo:</strong> {$dados['res_nome_fantasia']}</p>
+                                 <p><strong>Titulo:</strong> {$dados['tit_nome']}</p>
+                                 </div>
+                                 
+                                 <div class='resenha-contador'>
+                                    <p><strong>Total de Resenhas:</strong> {$dados['total_resenhas']}</p>
+                                </div> 
+                          
+                        </div>
             ";
                     }
                 }
@@ -199,13 +204,15 @@ GROUP BY
                             <a href='https://wa.me/{$telefone}?text={$mensagem}' target='_blank'>
                                 $imgTag
                             </a>
-                            <div>
+                        </div>
+                            <div class="cardtext">
                                 <h3>$nomeUsuario</h3>
                                 <p><strong>Pseudônimo:</strong> $nomeFantasia</p>
                                 <p><strong>Título:</strong> $titulo</p>
                             </div>
-                        </div>
+                       
                         <div class='resenha-contador'>
+                            <p>Total de resenhas</p>
                             $totalResenhas
                         </div>
                     </div>

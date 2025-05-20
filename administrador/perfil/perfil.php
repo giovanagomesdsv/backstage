@@ -9,7 +9,6 @@ if (!isset($_SESSION['id'])) {
 }
 
 $id_usuario = $_SESSION['id'];
-
 $sql = "SELECT usu_email, usu_nome, usu_senha, usu_data_criacao, usu_status FROM usuarios WHERE usu_id = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $id_usuario);
@@ -29,13 +28,9 @@ if ($result->num_rows === 1) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil do Usuário</title>
-
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <!-- Caminhos corrigidos dos CSS -->
     <link rel="stylesheet" href="perfil.css">
     <link rel="stylesheet" href="../geral.css">
-   
-
     <style>
         .status {
             font-weight: bold;
@@ -44,7 +39,6 @@ if ($result->num_rows === 1) {
     </style>
 </head>
 <body>
-
     <header>
         Administrador BC
     </header>
@@ -54,7 +48,6 @@ if ($result->num_rows === 1) {
             <div class="menu" id="menu">
                 <i class="bx bx-menu"></i>
             </div>
-
         </div>
         <ul class="nav-list">
             <li>
@@ -92,7 +85,6 @@ if ($result->num_rows === 1) {
             </li>
         </ul>
     </nav>
-
 <main>
     <div class="perfil-container">
         <h1>Perfil do Usuário</h1>

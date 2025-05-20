@@ -29,88 +29,55 @@
     font-size: 1.4rem;
     cursor: pointer;
     color: #000000;
-}
-
-.resenhista-box{
     border: solid 1px red;
 }
-
 
 /* Container geral do card */
 .resenhista-box {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #2f6690; /* azul escuro */
-    padding: 20px;
-    margin: 20px auto;
+    background-color: var(--principal); /* tom azul escuro */
+    padding: 2rem;
+    margin: 2rem ;
     border-radius: 6px;
-    color: white;
-    max-width: 800px;
+    color: var(--text);
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
     font-family: Arial, sans-serif;
-    flex-direction: column;
+    width: 100%;
+    border: solid 1px red;
 }
-
-/* Parte da esquerda: foto + infos */
-.resenhista-info {
+.cardtext{
     display: flex;
     align-items: center;
-    gap: 20px;
+   justify-content: center;
+   flex-direction: column;
+   border: solid 1px red;
+
 }
 
-/* Foto do resenhista */
-.resenhista-info img {
-    width: 100px;
-    height: 100px;
-    border-radius: 4px;
-    object-fit: cover;
+/* Informações alinhadas à esquerda */
+.resenhista-info a {
+    display: flex;
+ align-items: center;
+flex-direction: row;
+    gap: 2rem;
+    border: solid 1px red;
 }
 
-/* Informações do resenhista */
-.resenhista-info div h3 {
-    margin: 0;
-    font-size: 16px;
-    font-weight: bold;
-    color: white;
-}
-
-.resenhista-info div p {
-    margin: 4px 0;
-    font-size: 14px;
-    color: #d1d1d1;
-}
-
-/* Caixa do total de resenhas */
+/* Contador de resenhas à direita */
 .resenha-contador {
-    background-color: #e6e6e6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color:var(--bg);
     color: #000;
-    padding: 10px 20px;
-    font-size: 16px;
+
     border-radius: 4px;
     font-weight: bold;
-    text-align: center;
+    height: 100%;
+    border: solid 1px red;
+
 }
 
-/* Título acima do contador (use <small> se quiser) */
-.resenha-contador::before {
-    content: "TOTAL DE RESENHAS";
-    display: block;
-    font-size: 10px;
-    color: #fff;
-    margin-bottom: 5px;
-    text-align: center;
-}
-
-/* Responsividade opcional */
-@media (max-width: 600px) {
-    .resenhista-box {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .resenha-contador {
-        align-self: flex-end;
-        margin-top: 10px;
-    }
-}
