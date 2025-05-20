@@ -187,3 +187,40 @@ p{
         height: 40px; /* Reduz a altura do botão em telas muito pequenas */
     }
 }
+
+/*CONTAGEM DE USUARIOS*/
+.contagem-usuarios {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px 40px;
+}
+
+.usuario-card {
+    background-color: var(--secundaria);
+    color: white;
+    padding: 20px;
+    width: 250px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+    font-family: 'Verdana', sans-serif;
+}
+
+.usuario-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.usuario-card h3 {
+    margin: 0 0 10px;
+    font-size: 18px;
+    color: var(--text);
+}
+
+.usuario-card p {
+    font-size: 16px;
+    color: #f0f0f0;
+}
