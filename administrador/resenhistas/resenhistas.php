@@ -7,6 +7,7 @@ include "../protecao.php";
 <html lang="en">
 
 <head>
+<link rel="stylesheet" href="../resenhistas.css">
     <link rel="stylesheet" href="../geral.css">
 
     <meta charset="UTF-8">
