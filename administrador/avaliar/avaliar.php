@@ -80,7 +80,7 @@ if ($result->num_rows > 0) {
     <div class='card'>
         <div class='cardimgsinopse'>
                 <img src='imagens/livros/{$foto}' alt=''>
-                <div class="sinopse">
+                <div class='sinopse'>
                 <p>{$sinopse}</p>
                 <p>{$titulo}</p>
             </div>
