@@ -65,7 +65,7 @@ if ($result->num_rows > 0) {
         <meta charset='UTF-8'>
         <meta name='viewport' content='width=device-width, initial-scale=1.0'>
         <title>Avaliar Resenha</title>
-        <link rel="stylesheet" href="../home.css">
+        <link rel='stylesheet' href='../home.css'>
         <link rel='stylesheet' href='../geral.css'>
        
     </head>
@@ -77,8 +77,8 @@ if ($result->num_rows > 0) {
         <p class='avaliar'>AVALIAR RESENHA</p>
     </div>
 
-    <div class="card">
-        <div class="cardimgsinopse">
+    <div class='card'>
+        <div class='cardimgsinopse'>
                 <img src='imagens/livros/{$foto}' alt=''>
                 <div class="sinopse">
                 <p>{$sinopse}</p>
@@ -86,8 +86,8 @@ if ($result->num_rows > 0) {
             </div>
         </div>  
 
-        <div class="cardresenha">
-            <div class="resenha">
+        <div class='cardresenha'>
+            <div class='resenha'>
                 <p>RESENHA</p>
                 <p>{$texto}</p>
                 <p>{$autor}</p>
