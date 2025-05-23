@@ -81,8 +81,10 @@ if ($result->num_rows > 0) {
         <div class='cardimgsinopse'>
                 <img src='imagens/livros/{$foto}' alt=''>
                 <div class='sinopse'>
-                <p>{$sinopse}</p>
-                <p>{$titulo}</p>
+                 <p>{$titulo}</p>
+                 <p>Sinopse</p>
+                 <p>{$sinopse}</p>
+               
             </div>
         </div>  
 
