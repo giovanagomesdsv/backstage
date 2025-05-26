@@ -97,13 +97,15 @@ if ($result->num_rows > 0) {
         </div>  
 
         <form action='?id={$dado}' method='post' class='cardforms'>
-            <select name='avaliar' required>
-                <option value=''>Avaliar</option>
-                <option value='1'>Reprovada</option>
-                <option value='3'>Corrigir</option>
-                <option value='2'>Aprovada</option>
+            <select class= 'notas' name='avaliar' required>
+                
+                <option class='resultado' value=''>Avaliar</option>
+                <option class='resultado' value='1'>Reprovada</option>
+                <option class='resultado' value='3'>Corrigir</option>
+                <option class='resultado' value='2'>Aprovada</option>
             </select>
-            <input type='submit' value='Enviar'>
+
+            <input class='teste' type='submit' value='Enviar'>
         </form>
     </div>
     </body>
