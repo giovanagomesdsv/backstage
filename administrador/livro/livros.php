@@ -6,6 +6,7 @@ include "../protecao.php";
 <html lang="pt-br">
 
 <head>
+    <link rel="stylesheet" href=". ./livros.css">
     <link rel="stylesheet" href="../geral.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,10 +17,9 @@ include "../protecao.php";
 </head>
 
 <body>
-    <header>
+    <header>       
         Administrador BC
     </header>
-    <!--
     <nav class="sidebar" id="sidebar"> 
        <div class="nome">
 
@@ -70,7 +70,7 @@ include "../protecao.php";
                 <a href="../logout.php"><i class='bx bx-log-out'></i></a>
             </li>
         </ul>
-    </nav> -->
+    </nav> 
 
     <div class="busca">
         <form action="" method="GET">
