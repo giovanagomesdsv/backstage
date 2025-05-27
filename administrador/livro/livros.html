@@ -17,15 +17,17 @@ include "../protecao.php";
 </head>
 
 <body>
-    <header>       
+    <header>
         Administrador BC
     </header>
-    <nav class="sidebar" id="sidebar"> 
-       <div class="nome">
+    <nav class="sidebar" id="sidebar">
+        <div class="nome">
 
             <li class="logo_name">
                 <a href="perfil/perfil.php">
-                    <span class="link_name"><?php echo $_SESSION['nome']; ?></span>
+                    <span class="link_name">
+                        <?php echo $_SESSION['nome']; ?>
+                    </span>
                 </a>
             </li>
 
@@ -36,7 +38,7 @@ include "../protecao.php";
 
         </div>
         <ul class="nav-list">
-            <li >
+            <li>
                 <a href="../home.php">
                     <i class='bx bx-home-alt-2'></i>
                     <span class="link_name">Home</span>
@@ -70,18 +72,18 @@ include "../protecao.php";
                 <a href="../logout.php"><i class='bx bx-log-out'></i></a>
             </li>
         </ul>
-    </nav> 
-
-    <div class="busca-container">
-        <form action="" method="GET">
-            <input type="text" name="busca" placeholder="Busque as livrarias...">
-            <button type="submit">Pesquisar</button>
-        </form>
-    </div>
+    </nav>
+    <main>
 
 
-    <div class="pesquisa">
-        <?php
+        <div class="busca-container">
+            <form action="" method="GET" class="busca-form">
+                <input type="text" name="busca" placeholder="Buscar livro">
+                <button type="submit"><i class='bx bx-search'></i></button>
+            </form>
+        </div>
+        <div class="pesquisa">
+            <?php
         if (!isset($_GET['busca']) || empty($_GET['busca'])) {
             echo "<div class='resultados'></div>";
         } else {
@@ -112,14 +114,16 @@ INNER JOIN autores ON livro_autores.aut_id = autores.aut_id
                 while ($dados = $sql_query->fetch_assoc()) {
                     echo "
                          <div>
-        <div>
+                            <div class="cardlivro">
+        <div class="cardlivroimg">
            <img src='../imagens/livros/{$dados['livro_foto']}'>
         </div>
-        <div>
-           <p>{$dados['livro_titulo']}</p>
-           <p>{$dados['aut_nome']}</p>
-           <p>R$ {$dados['liv_livro_preco']}</p>
-           <p>{$dados['liv_nome']}</p>
+        <div class="cardlivrotext">
+           <p class="cardlivroinput">{$dados['livro_titulo']}</p>
+           <p class="cardlivroinput">{$dados['aut_nome']}</p>
+           <p class="cardlivroinput">R$ {$dados['liv_livro_preco']}</p>
+           <p class="cardlivroinput">{$dados['liv_nome']}</p>
+        </div>
         </div>
     </div>
          
@@ -128,13 +132,13 @@ INNER JOIN autores ON livro_autores.aut_id = autores.aut_id
             }
         }
         ?>
-    </div>
+        </div>
 
 
 
 
-    <div>
-    <?php
+        <div>
+            <?php
 // Consulta segura utilizando Prepared Statements
 $sql_code = "
     SELECT 
@@ -177,10 +181,10 @@ if ($tabela = mysqli_query($conn, $sql_code)) {
 }
 ?>
 
-    </div>
+        </div>
 
 
-
+    </main>
 
     <script src="../script.js"></script>
 </body>
